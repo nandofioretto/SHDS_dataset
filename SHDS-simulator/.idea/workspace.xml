@@ -1,0 +1,1437 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="663b4df1-bc4b-47f6-a734-e1c05382fe78" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.idea.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SHDS_simulator.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/instances.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/lib.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/out.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/outputs/output.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/resources.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SHDS-simulator.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/nmsu/RuleParser.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/META-INF/MANIFEST.MF" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/SHDS_simulator_jar/SHDS-simulator.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/SHDS_simulator_jar/jacop-4.4.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/SHDS_simulator_jar/json-20160810.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/Home/Devices/Action$Effect.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/Home/Devices/Action.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/Home/Devices/Actuator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/Home/Devices/Device.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/Home/Devices/Sensor.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/Home/Devices/SensorProperty.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/Home/Home.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/Home/LocalSolver/ActuatorSchedule.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/Home/LocalSolver/DebugSchedule.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/Home/LocalSolver/RuleSchedulerSolver$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/Home/LocalSolver/RuleSchedulerSolver.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/Home/LocalSolver/RulesSchedule.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/Home/LocalSolver/Solver.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/Home/Rules/PredictiveModel.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/Home/Rules/PredictiveModelFactory.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/Home/Rules/RuleBinaryRelation.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/Home/Rules/RuleTimePredicate.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/Home/Rules/RuleTimePrefix.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/Home/Rules/RuleType.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/Home/Rules/SchedulingRule$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/Home/Rules/SchedulingRule.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/agents/MGM/MGMAgent$EnergyProfileMessage.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/agents/MGM/MGMAgent$GainMessage.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/agents/MGM/MGMAgent.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/agents/MGM/MGMAgentActions$NullOutputStream.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/agents/MGM/MGMAgentActions.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/agents/MGM/MGMAgentState.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/agents/MGM/MGMAgentView.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/communication/AgentStatistics.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/communication/BasicMessage.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/communication/ComAgent.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/communication/DCOPagent.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/communication/DCOPinfo.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/communication/Messages$EndSignal.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/communication/Messages$RegisterLeader.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/communication/Messages$RegisterNeighbor.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/communication/Messages$StartSignal.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/communication/Messages.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/communication/PseudoTree.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/communication/Spawner.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/communication/StatisticsDeamon$AgentStatisticsInfo.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/communication/StatisticsDeamon$WatchMe.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/communication/StatisticsDeamon.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/communication/StopWatch.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/communication/TrackableObject.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/kernel/AgentActions.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/kernel/AgentState$AgentStateComparator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/kernel/AgentState.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/kernel/AgentView$Evaluator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/kernel/AgentView.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/kernel/BoundDomain.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/kernel/Constants.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/kernel/Constraint.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/kernel/ConstraintFactory.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/kernel/DCOPInstance.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/kernel/DCOPInstanceFactory$Type.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/kernel/DCOPInstanceFactory.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/kernel/DCOPalgorithmState.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/kernel/DCOPobject.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/kernel/Domain.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/kernel/IntVariable.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/kernel/Permutations.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/kernel/TableBinaryConstraint.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/kernel/TableConstraint.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/kernel/Tuple.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/kernel/Variable.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/kernel/VariableFactory.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/problem/Generator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/problem/GeneratorMulti.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/problem/Pair.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/problem/Parameters.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/problem/RuleGenerator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/problem/Topology.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/edu/nmsu/problem/Utilities.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_BO_0.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_BO_1.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_BO_2.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_BO_3.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_BO_4.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_BO_5.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_BO_6.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_BO_7.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_BO_8.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_BO_9.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_DM_0.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_DM_1.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_DM_2.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_DM_3.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_DM_4.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_DM_5.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_DM_6.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_DM_7.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_DM_8.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_DM_9.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_SF_0.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_SF_1.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_SF_2.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_SF_3.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_SF_4.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_SF_5.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_SF_6.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_SF_7.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_SF_8.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/10clusters/instance_SF_9.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_BO_0.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_BO_1.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_BO_2.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_BO_3.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_BO_4.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_BO_5.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_BO_6.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_BO_7.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_BO_8.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_BO_9.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_DM_0.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_DM_0_10.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_DM_0_100.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_DM_0_20.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_DM_1.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_DM_2.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_DM_3.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_DM_4.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_DM_5.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_DM_6.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_DM_7.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_DM_8.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_DM_9.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_0.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_1.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_10.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_11.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_12.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_13.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_14.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_15.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_16.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_17.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_18.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_19.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_2.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_20.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_21.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_22.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_23.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_24.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_25.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_26.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_27.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_28.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_29.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_3.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_30.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_31.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_32.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_33.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_34.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_35.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_36.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_37.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_38.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_39.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_4.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_40.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_41.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_42.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_43.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_44.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_45.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_46.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_47.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_48.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_49.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_5.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_6.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_7.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_8.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_PI_9.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_SF_0.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_SF_1.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_SF_2.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_SF_3.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_SF_4.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_SF_5.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_SF_6.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_SF_7.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_SF_8.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instance_SF_9.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/inputs/1cluster/instances.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/Home/Devices/Action.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/Home/Devices/Actuator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/Home/Devices/Device.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/Home/Devices/Sensor.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/Home/Devices/SensorProperty.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/Home/Home.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/Home/LocalSolver/ActuatorSchedule.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/Home/LocalSolver/CPSolver.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/Home/LocalSolver/DebugSchedule.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/Home/LocalSolver/RuleSchedulerSolver.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/Home/LocalSolver/RuleSchedulerSolver2.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/Home/LocalSolver/RulesSchedule.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/Home/LocalSolver/Solver.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/Home/Rules/PredictiveModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/Home/Rules/PredictiveModelFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/Home/Rules/RuleBinaryRelation.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/Home/Rules/RuleTimePredicate.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/Home/Rules/RuleTimePrefix.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/Home/Rules/RuleType.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/Home/Rules/SchedulingRule.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/agents/MGM/MGMAgent.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/agents/MGM/MGMAgentActions.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/agents/MGM/MGMAgentState.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/agents/MGM/MGMAgentView.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/communication/AgentStatistics.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/communication/BasicMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/communication/ComAgent.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/communication/DCOPagent.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/communication/DCOPinfo.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/communication/Messages.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/communication/PseudoTree.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/communication/Spawner.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/communication/StatisticsDeamon.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/communication/StopWatch.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/communication/TrackableObject.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/kernel/AgentActions.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/kernel/AgentState.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/kernel/AgentView.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/kernel/BoundDomain.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/kernel/Constants.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/kernel/Constraint.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/kernel/ConstraintFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/kernel/DCOPInstance.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/kernel/DCOPInstanceFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/kernel/DCOPalgorithmState.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/kernel/DCOPobject.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/kernel/Domain.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/kernel/IntVariable.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/kernel/Permutations.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/kernel/TableBinaryConstraint.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/kernel/TableConstraint.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/kernel/Tuple.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/kernel/Variable.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/kernel/VariableFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edu/nmsu/problem/GeneratorMulti.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SHDS-simulator.iml" afterPath="$PROJECT_DIR$/SHDS-simulator.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/DeviceDictionary.json" afterPath="$PROJECT_DIR$/resources/DeviceDictionary.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/nmsu/Main.java" afterPath="$PROJECT_DIR$/src/edu/nmsu/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/nmsu/problem/Generator.java" afterPath="$PROJECT_DIR$/src/edu/nmsu/problem/Generator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/nmsu/problem/RuleGenerator.java" afterPath="$PROJECT_DIR$/src/edu/nmsu/problem/RuleGenerator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/nmsu/problem/Topology.java" afterPath="$PROJECT_DIR$/src/edu/nmsu/problem/Topology.java" />
+    </list>
+    <ignored path="SHDS-simulator.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="SHDS-simulator" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/edu/nmsu/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="372">
+              <caret line="144" column="16" lean-forward="false" selection-start-line="144" selection-start-column="16" selection-end-line="146" selection-end-column="55" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Generator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/nmsu/problem/Generator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-391">
+              <caret line="191" column="64" lean-forward="false" selection-start-line="191" selection-start-column="64" selection-end-line="191" selection-end-column="64" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RuleGenerator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/nmsu/problem/RuleGenerator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="152" column="41" lean-forward="false" selection-start-line="152" selection-start-column="41" selection-end-line="152" selection-end-column="41" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RuleParser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/nmsu/RuleParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1235">
+              <caret line="65" column="38" lean-forward="false" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DeviceDictionary.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/DeviceDictionary.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1333">
+              <caret line="652" column="58" lean-forward="false" selection-start-line="652" selection-start-column="58" selection-end-line="652" selection-end-column="58" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>Bryant_697CN030B</find>
+      <find>temperature_heat</find>
+      <find>62</find>
+      <find>activeGen</find>
+      <find>&quot;h</find>
+      <find>17</find>
+      <find>resources/outputs/</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/edu/nmsu/Home/LocalSolver/CPSolver.java" />
+        <option value="$PROJECT_DIR$/src/edu/nmsu/kernel/DCOPInstanceFactory.java" />
+        <option value="$PROJECT_DIR$/src/edu/nmsu/problem/Utilities.java" />
+        <option value="$PROJECT_DIR$/src/edu/nmsu/communication/AgentStatistics.java" />
+        <option value="$PROJECT_DIR$/src/edu/nmsu/agents/MGM/MGMAgent.java" />
+        <option value="$PROJECT_DIR$/src/edu/nmsu/Home/Rules/SchedulingRule.java" />
+        <option value="$PROJECT_DIR$/src/edu/nmsu/agents/MGM/MGMAgentActions.java" />
+        <option value="$PROJECT_DIR$/src/edu/nmsu/Home/LocalSolver/RuleSchedulerSolver.java" />
+        <option value="$PROJECT_DIR$/src/edu/nmsu/problem/Topology.java" />
+        <option value="$PROJECT_DIR$/instance_DM_a7_c1_d6.json" />
+        <option value="$PROJECT_DIR$/resources/outputs/output.json" />
+        <option value="$PROJECT_DIR$/src/RuleParser.java" />
+        <option value="$PROJECT_DIR$/src/edu/nmsu/RuleParser.java" />
+        <option value="$PROJECT_DIR$/src/edu/nmsu/problem/RuleGenerator.java" />
+        <option value="$PROJECT_DIR$/src/edu/nmsu/problem/Generator.java" />
+        <option value="$PROJECT_DIR$/resources/DeviceDictionary.json" />
+        <option value="$PROJECT_DIR$/src/edu/nmsu/Main.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1273" />
+    <option name="width" value="1294" />
+    <option name="height" value="1047" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SHDS-simulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SHDS-simulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SHDS-simulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SHDS-simulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SHDS-simulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SHDS-simulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="inputs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.46375144" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
+    <property name="js.eslint.eslintPackage" value="" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="edu.nmsu" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Unnamed">
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file id="idea.log" enabled="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Cold Fusion runner description" factoryName="Cold Fusion" custom_browser="" web_path="">
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="passParentEnv" value="true" />
+      <setting name="launchBrowser" value="true" />
+      <setting name="launchBrowserUrl" value="" />
+      <setting name="depsClasspath" value="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SCRATCH_FILE_ID" value="0" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
+      <method />
+    </configuration>
+    <configuration default="false" name="Unnamed" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="edu.nmsu.Main" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="SHDS-simulator" />
+      <envs />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Application.Unnamed" />
+    </list>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="663b4df1-bc4b-47f6-a734-e1c05382fe78" name="Default" comment="" />
+      <created>1485194811249</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1485194811249</updated>
+      <workItem from="1485194812614" duration="156000" />
+      <workItem from="1485195014861" duration="12245000" />
+      <workItem from="1485222003586" duration="2432000" />
+      <workItem from="1485281208628" duration="6024000" />
+      <workItem from="1485313436790" duration="2385000" />
+      <workItem from="1485372975564" duration="9552000" />
+      <workItem from="1485454399649" duration="1575000" />
+      <workItem from="1485543287086" duration="19000" />
+      <workItem from="1485806454178" duration="404000" />
+      <workItem from="1486330104739" duration="3428000" />
+      <workItem from="1486513569593" duration="975000" />
+      <workItem from="1486665869595" duration="2903000" />
+      <workItem from="1486756349192" duration="760000" />
+      <workItem from="1486758056529" duration="11202000" />
+      <workItem from="1486846747775" duration="9660000" />
+      <workItem from="1486861048334" duration="377000" />
+      <workItem from="1486864716802" duration="6319000" />
+      <workItem from="1486921956761" duration="5179000" />
+      <workItem from="1486933086453" duration="1809000" />
+      <workItem from="1486945603521" duration="266000" />
+      <workItem from="1487182165417" duration="7907000" />
+      <workItem from="1487190901004" duration="5203000" />
+      <workItem from="1487208947064" duration="656000" />
+      <workItem from="1487209683344" duration="6277000" />
+      <workItem from="1487217947873" duration="14779000" />
+      <workItem from="1487269489397" duration="3652000" />
+      <workItem from="1487294572539" duration="1445000" />
+      <workItem from="1487446988373" duration="593000" />
+      <workItem from="1487492538662" duration="1367000" />
+      <workItem from="1487534406210" duration="3972000" />
+      <workItem from="1487559024395" duration="684000" />
+      <workItem from="1487795254839" duration="626000" />
+      <workItem from="1488399243454" duration="373000" />
+      <workItem from="1488518841783" duration="3616000" />
+      <workItem from="1488570381493" duration="770000" />
+      <workItem from="1488913434749" duration="2784000" />
+      <workItem from="1488920097975" duration="453000" />
+      <workItem from="1489650639751" duration="3401000" />
+      <workItem from="1489733311114" duration="5678000" />
+      <workItem from="1489866928969" duration="554000" />
+      <workItem from="1489868162518" duration="6427000" />
+      <workItem from="1489884044686" duration="5477000" />
+      <workItem from="1489955336886" duration="11625000" />
+      <workItem from="1490042017561" duration="9675000" />
+      <workItem from="1490120509784" duration="13608000" />
+      <workItem from="1490240675363" duration="4533000" />
+      <workItem from="1490246984411" duration="606000" />
+      <workItem from="1490248029891" duration="309000" />
+      <workItem from="1490248351578" duration="389000" />
+      <workItem from="1490248873053" duration="552000" />
+      <workItem from="1490249965845" duration="330000" />
+      <workItem from="1490250901849" duration="3729000" />
+      <workItem from="1490287992842" duration="15485000" />
+      <workItem from="1490373991749" duration="1594000" />
+      <workItem from="1490495327522" duration="25498000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="242297000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1273" y="0" width="1294" height="1047" extended-state="1" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32730263" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985508" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44134727" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33479694" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0829421" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959481" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985508" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959481" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37066245" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44134727" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2429022" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.095168374" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="3" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+    <buildFile url="file://$PROJECT_DIR$/shds-simulator.xml">
+      <targetFilters>
+        <filter targetName="register.custom.compilers" isVisible="false" />
+        <filter targetName="init" isVisible="true" />
+        <filter targetName="clean" isVisible="true" />
+        <filter targetName="build.modules" isVisible="true" />
+        <filter targetName="init.artifacts" isVisible="false" />
+        <filter targetName="clean.artifact.shds-simulator:jar" isVisible="true" />
+        <filter targetName="artifact.shds-simulator:jar" isVisible="true" />
+        <filter targetName="build.all.artifacts" isVisible="true" />
+        <filter targetName="all" isVisible="true" />
+        <filter targetName="compile.module.shds-simulator" isVisible="true" />
+        <filter targetName="compile.module.shds-simulator.production" isVisible="true" />
+        <filter targetName="compile.module.shds-simulator.tests" isVisible="true" />
+        <filter targetName="clean.module.shds-simulator" isVisible="true" />
+      </targetFilters>
+      <expanded value="true" />
+    </buildFile>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/resources/inputs/OPTMAS-17/instance_BO_a2035_c1024_d9.json" />
+    <entry file="file://$PROJECT_DIR$/resources/inputs/OPTMAS-17/instance_BO_a13_c1_d2.json" />
+    <entry file="file://$PROJECT_DIR$/resources/inputs/OPTMAS-17/instance_SF_a188_c1_d1.json" />
+    <entry file="file://$PROJECT_DIR$/src/edu/nmsu/Home/Devices/Device.java" />
+    <entry file="file://$PROJECT_DIR$/resources/inputs/OPTMAS-17/instance_BO_a13_c1_d4.json" />
+    <entry file="file://$PROJECT_DIR$/resources/inputs/OPTMAS-17/instance_SF_a11298_c1_d1.json" />
+    <entry file="file://$PROJECT_DIR$/resources/inputs/OPTMAS-17/instance_SF_a5649_c1024_d8.json" />
+    <entry file="file://$PROJECT_DIR$/src/edu/nmsu/communication/AgentStatistics.java" />
+    <entry file="file://$PROJECT_DIR$/src/edu/nmsu/communication/DCOPagent.java" />
+    <entry file="file://$PROJECT_DIR$/resources/inputs/OPTMAS-17/instance_BO_a13_c1_d1.json" />
+    <entry file="file://$PROJECT_DIR$/resources/inputs/OPTMAS-17/instance_BO_a13_c1_d3.json" />
+    <entry file="file://$PROJECT_DIR$/src/edu/nmsu/Home/Rules/SchedulingRule.java" />
+    <entry file="file://$PROJECT_DIR$/src/edu/nmsu/communication/ComAgent.java" />
+    <entry file="file://$PROJECT_DIR$/src/edu/nmsu/agents/MGM/MGMAgent.java" />
+    <entry file="file://$PROJECT_DIR$/src/edu/nmsu/agents/MGM/MGMAgentActions.java" />
+    <entry file="file://$PROJECT_DIR$/src/edu/nmsu/Home/LocalSolver/RulesSchedule.java" />
+    <entry file="file://$PROJECT_DIR$/resources/inputs/OPTMAS-17/instance_DM_a7_c1_d3.json" />
+    <entry file="file://$PROJECT_DIR$/src/edu/nmsu/communication/Spawner.java" />
+    <entry file="file://$PROJECT_DIR$/src/edu/nmsu/Home/LocalSolver/RuleSchedulerSolver.java" />
+    <entry file="file://$PROJECT_DIR$/src/edu/nmsu/kernel/DCOPInstanceFactory.java" />
+    <entry file="file://$PROJECT_DIR$/src/edu/nmsu/agents/MGM/MGMAgentState.java" />
+    <entry file="file://$PROJECT_DIR$/src/edu/nmsu/Home/Home.java" />
+    <entry file="file://$PROJECT_DIR$/src/edu/nmsu/problem/GeneratorMulti.java" />
+    <entry file="file://$PROJECT_DIR$/src/edu/nmsu/problem/Pair.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/RuleFile_0.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/instance_DM_a7_c1_d6.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-595">
+          <caret line="41" column="41" lean-forward="false" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/instance_BO_a13_c1_d3.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/instance_SF_a188_c1_d6.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/nmsu/problem/Utilities.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1870">
+          <caret line="115" column="22" lean-forward="false" selection-start-line="115" selection-start-column="22" selection-end-line="115" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shds-simulator.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/nmsu/problem/Parameters.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/instance_BO_a71_c1_d2_2.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1632">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/instance_BO_a71_c1_d2_3.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1530">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model_specifications.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/nmsu/problem/Topology.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="707">
+          <caret line="84" column="23" lean-forward="false" selection-start-line="84" selection-start-column="23" selection-end-line="84" selection-end-column="23" />
+          <folding>
+            <element signature="e#2848#2849#0" expanded="true" />
+            <element signature="e#2889#2890#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/outputs/output.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ruleCSV.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="1192" column="2" lean-forward="false" selection-start-line="1192" selection-start-column="0" selection-end-line="1192" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/instance_BO_a71_c1_d2.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1921">
+          <caret line="113" column="5" lean-forward="false" selection-start-line="113" selection-start-column="5" selection-end-line="113" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/nmsu/RuleParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1235">
+          <caret line="65" column="38" lean-forward="false" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/instance_BO_a71_c1_d2_1.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/instance_BO_a71_c1_d5_1.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6120">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/instance_BO_a71_c1_d5_2.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3111">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/instance_BO_a71_c1_d5_3.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2907">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/instance_BO_a71_c1_d5CSV.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/nmsu/problem/RuleGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="152" column="41" lean-forward="false" selection-start-line="152" selection-start-column="41" selection-end-line="152" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/nmsu/problem/Generator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-391">
+          <caret line="191" column="64" lean-forward="false" selection-start-line="191" selection-start-column="64" selection-end-line="191" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/inputs/instance_BO_a71_c1_d2_3.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1581">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/inputs/instance_BO_a71_c1_d2_2.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1581">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/inputs/instance_BO_a71_c1_d2_1.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1530">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/DeviceDictionary.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1333">
+          <caret line="652" column="58" lean-forward="false" selection-start-line="652" selection-start-column="58" selection-end-line="652" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/nmsu/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="144" column="16" lean-forward="false" selection-start-line="144" selection-start-column="16" selection-end-line="146" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>SHDS-simulator:jar</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.46375144" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.46375144" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>lib</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.46375144" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.46375144" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>SHDS-simulator</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.46375144" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>instances</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.46375144" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_shds-simulator" default="compile.module.shds-simulator">
+  <dirname property="module.shds-simulator.basedir" file="${ant.file.module_shds-simulator}"/>
+  
+  <property name="module.jdk.home.shds-simulator" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.shds-simulator" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.shds-simulator" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.shds-simulator" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="shds-simulator.output.dir" value="${module.shds-simulator.basedir}/../out"/>
+  <property name="shds-simulator.testoutput.dir" value="${module.shds-simulator.basedir}/../src/test"/>
+  
+  <path id="shds-simulator.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="shds-simulator.module.production.classpath">
+    <path refid="${module.jdk.classpath.shds-simulator}"/>
+    <fileset dir="${basedir}/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+    <path refid="library.jacop-4.4.0.classpath"/>
+    <path refid="library.json-20160810.classpath"/>
+  </path>
+  
+  <path id="shds-simulator.runtime.production.module.classpath">
+    <pathelement location="${shds-simulator.output.dir}"/>
+    <fileset dir="${basedir}/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+    <path refid="library.jacop-4.4.0.classpath"/>
+    <path refid="library.json-20160810.classpath"/>
+  </path>
+  
+  <path id="shds-simulator.module.classpath">
+    <path refid="${module.jdk.classpath.shds-simulator}"/>
+    <pathelement location="${shds-simulator.output.dir}"/>
+    <fileset dir="${basedir}/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+    <path refid="library.jacop-4.4.0.classpath"/>
+    <path refid="library.json-20160810.classpath"/>
+  </path>
+  
+  <path id="shds-simulator.runtime.module.classpath">
+    <pathelement location="${shds-simulator.testoutput.dir}"/>
+    <pathelement location="${shds-simulator.output.dir}"/>
+    <fileset dir="${basedir}/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+    <path refid="library.jacop-4.4.0.classpath"/>
+    <path refid="library.json-20160810.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.shds-simulator">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.shds-simulator">
+    <patternset refid="excluded.from.module.shds-simulator"/>
+  </patternset>
+  
+  <path id="shds-simulator.module.sourcepath">
+    <dirset dir="${module.shds-simulator.basedir}/../../SHDS-simulator">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.shds-simulator" depends="compile.module.shds-simulator.production,compile.module.shds-simulator.tests" description="Compile module SHDS-simulator"/>
+  
+  <target name="compile.module.shds-simulator.production" depends="register.custom.compilers" description="Compile module SHDS-simulator; production classes">
+    <mkdir dir="${shds-simulator.output.dir}"/>
+    <javac2 destdir="${shds-simulator.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.shds-simulator}/javac">
+      <compilerarg line="${compiler.args.shds-simulator}"/>
+      <bootclasspath refid="shds-simulator.module.bootclasspath"/>
+      <classpath refid="shds-simulator.module.production.classpath"/>
+      <src refid="shds-simulator.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.shds-simulator"/>
+    </javac2>
+    
+    <copy todir="${shds-simulator.output.dir}">
+      <fileset dir="${module.shds-simulator.basedir}/../src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.shds-simulator.tests" depends="register.custom.compilers,compile.module.shds-simulator.production" description="compile module SHDS-simulator; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.shds-simulator" description="cleanup module">
+    <delete dir="${shds-simulator.output.dir}"/>
+    <delete dir="${shds-simulator.testoutput.dir}"/>
+  </target>
+</project>

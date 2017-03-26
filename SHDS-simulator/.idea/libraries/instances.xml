@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="instances">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/resources/inputs/1cluster/instances.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

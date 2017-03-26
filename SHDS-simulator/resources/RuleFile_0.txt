@@ -1,0 +1,27 @@
+TYPE	LOCATION	PROPERTY	RELATION	GOAL_STATE	TIME_PREFIX	TIME_VALUE
+1	LG_WM2016CW	laundry_wash	eq	2	before	6
+0	LG_WM2016CW	laundry_wash	geq	0
+0	LG_WM2016CW	laundry_wash	leq	2
+1	GE_WSM2420D3WW	laundry_dry	eq	2	before	7
+0	GE_WSM2420D3WW	laundry_dry	geq	0
+0	GE_WSM2420D3WW	laundry_dry	leq	2
+1	Kenmore_665.13242K900	dish_wash	eq	2	after	6
+0	Kenmore_665.13242K900	dish_wash	geq	0
+0	Kenmore_665.13242K900	dish_wash	leq	2
+1	Kenmore_790.91312013	bake	eq	2	at	4
+0	Kenmore_790.91312013	bake	geq	0
+0	Kenmore_790.91312013	bake	leq	2
+1	water_tank	water_temp	geq	30	within	5   8
+0	water_tank	water_temp	geq	10
+0	water_tank	water_temp	leq	50
+1	Tesla_S	charge	geq	78	within	3	6
+0	Tesla_S	charge	geq	0
+0	Tesla_S	charge	leq	100
+1	room	temperature_heat	gt	22	at	6
+0	room	temperature_heat	geq	16
+0	room	temperature_heat	leq	28
+1	room	cleanliness	gt	90	at	10
+0	room	cleanliness	geq	0
+0	room	cleanliness	leq	100
+0	iRobot_651	charge	geq	0
+0	iRobot_651	charge	leq	100
