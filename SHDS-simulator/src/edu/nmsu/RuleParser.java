@@ -173,7 +173,7 @@ public class RuleParser {
                 break;
             case 5:
                 passive.add("0 " + device + " " + property + " geq 10");
-                passive.add("0 " + device + " " + property + " leq 50");
+                passive.add("0 " + device + " " + property + " leq 55");
                 break;
             case 6:
                 passive.add("0 " + device + " " + property + " geq 0");

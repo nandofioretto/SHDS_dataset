@@ -398,7 +398,7 @@ public class RuleGenerator {
 
         rules.add(activeGen(device, property, relation, state, randPredicate()));
         rules.add("0 " + device + " " + property + " geq 10");
-        rules.add("0 " + device + " " + property + " leq 50");
+        rules.add("0 " + device + " " + property + " leq 55");
         return rules;
     }
 

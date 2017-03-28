@@ -1,2 +1,0 @@
-instance	num_agents	num_clusters	num_devices	simTime	SumSchedCost	SumPriceCost	SumEnergyCost	MaxPowerPeak
-instance_test	4	    2	            4	        152.00	4762.83	        15.12	        75.25	        72.50

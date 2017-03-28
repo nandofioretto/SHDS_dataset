@@ -48,12 +48,11 @@ public class Main {
          *                    Each cluster is connected to one other cluster, connecting the whole graph together.
          * int gridLength --- Chunk of the city covered by the problem, this is in meters^2
          **/
-        Topology topo = generateTopology(0, 100, 1);
+        Topology topo = generateTopology(1, 350, 1);
         /**File name*/
         String fileName = "instance_BO"
                 + "_a" + topo.getNumAgents()
-                + "_c" + topo.getNumClusters()
-                + "_d" + dev;// + ".json";
+                + "_c" + topo.getNumClusters();// + ".json";
 
         /**
          * Generating the file
@@ -119,7 +118,7 @@ public class Main {
         int time_granularity = 60;
         for(int i = 0; i < city.length; i++) {
             for(int j = 0; j < NUM_GRID_SIZES; j++) {
-                Topology temp = generateTopology(i, gridLength[j], 1);
+                Topology temp = null;// = generateTopology(i, gridLength[j], 1);
                 /*
                 for (int d = MIN_DEV; d <= MAX_DEV; d++) {
                     String fileName = "resources/data/instance_" + city[i]
@@ -129,23 +128,29 @@ public class Main {
                     //System.out.println(fileName);
                     generateSHDSInstances(fileName, d, temp, 12, 60); //TODO put time_span and time_granularity variables here
                 }
-                for (int k = 0; k < clusterDiv.length; k++) {
+                */
+                for (int k = 1; k < clusterDiv.length; k++) {
                     Topology temp2 = generateTopology(i, gridLength[j], clusterDiv[k]);
                     if (temp2 == null) continue; // if num_agents < agents_per_cluster then stop
-                    temp = temp2;
+                    String fileName = "resources/inputs/instance_" + city[i]
+                            + "_a" + temp2.getNumAgents()
+                            + "_c" + temp2.getNumClusters();// + ".json";
+                    generateSHDSInstances(fileName, MAX_DEV, temp2, 12, 60);
+                    //temp = temp2;
                 }
-
+/*
                 String fileName = "resources/data/instance_" + city[i]
                         + "_a" + temp.getNumAgents()
                         + "_c" + temp.getNumClusters()
                         + "_d" + MAX_DEV;// + ".json";
                 //System.out.println(fileName);
-                generateSHDSInstances(fileName, MAX_DEV, temp, 12, 60);*/
 
+                generateSHDSInstances(fileName, MAX_DEV, temp, 12, 60);*/
+                /*
                 String fileName = "resources/inputs/instance_" + city[i]
                         + "_a" + temp.getNumAgents()
                         + "_c" + temp.getNumClusters();// + ".json";
-                generateSHDSInstances(fileName, MAX_DEV, temp, 12, 60);
+                generateSHDSInstances(fileName, MAX_DEV, temp, 12, 60);*/
             }
         }
     }
