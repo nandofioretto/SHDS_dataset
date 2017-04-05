@@ -1,0 +1,9 @@
+{
+    "time_span": 12,
+    "time_granularity": 60,
+    "house_ratio":[ 1, 1, 1],
+    "num_devices": 4,
+    "gridLength": 10,
+    "clusterDiv": 1,
+    "city": 1
+}
