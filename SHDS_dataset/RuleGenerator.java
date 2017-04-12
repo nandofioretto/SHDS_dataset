@@ -285,8 +285,8 @@ public class RuleGenerator {
                     time1 = Utilities.genRand(minTime + 2, horizon-1);
                     time2 = Utilities.genRand(minTime + 2, horizon-1);
                 } while(time1 == time2);
-                addCSV(RuleParser.rand_var_id.TIME1, time1);
-                addCSV(RuleParser.rand_var_id.TIME2, time2);
+                addCSV(RuleParser.rand_var_id.TIME1, Math.min(time1, time2));
+                addCSV(RuleParser.rand_var_id.TIME2, Math.max(time1, time2));
                 return rule + " within " + Math.min(time1, time2) + " " + Math.max(time1, time2);
         }
         return null;
@@ -411,17 +411,23 @@ public class RuleGenerator {
         String rule = "1 " + device + " " + property + " " + relation + " " + state;
         double start_state = 10; double delta = 10.2;
         int minTime = (int) ((state - start_state) / delta) + 1;
+        addCSV(RuleParser.rand_var_id.RELATION,   relation);
+        addCSV(RuleParser.rand_var_id.STATE,         state);
+        addCSV(RuleParser.rand_var_id.PREDICATE,  timePred);
         switch(timePred) {
             case "before":
                 time1 = Utilities.genRand(minTime + 2, horizon-1);
+                addCSV(RuleParser.rand_var_id.TIME1, time1);
                 rule += " before " + time1;
                 break;
             case "after":
                 time1 = Utilities.genRand(1, horizon - minTime - 2);
+                addCSV(RuleParser.rand_var_id.TIME1, time1);
                 rule +=  " after " + time1;
                 break;
             case "at":
                 time1 = Utilities.genRand(minTime + 2, horizon-1);
+                addCSV(RuleParser.rand_var_id.TIME1, time1);
                 rule +=     " at " + time1;
                 break;
             case "within":
@@ -429,13 +435,13 @@ public class RuleGenerator {
                     time1 = Utilities.genRand(minTime + 2, horizon-1);
                     time2 = Utilities.genRand(minTime + 2, horizon-1);
                 } while(time1 == time2);
+                addCSV(RuleParser.rand_var_id.TIME1, Math.min(time1, time2));
+                addCSV(RuleParser.rand_var_id.TIME2, Math.max(time1, time2));
                 rule += " within " + Math.min(time1, time2) + " " + Math.max(time1, time2);
                 break;
         }
         rules.add(rule);
-        addCSV(RuleParser.rand_var_id.RELATION,   relation);
-        addCSV(RuleParser.rand_var_id.STATE,         state);
-        addCSV(RuleParser.rand_var_id.PREDICATE,  timePred);
+        
         rules.add("0 " + device + " " + property + " geq 0");
         rules.add("0 " + device + " " + property + " leq 100");
         return rules;

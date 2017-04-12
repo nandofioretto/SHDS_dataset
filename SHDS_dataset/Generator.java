@@ -48,9 +48,7 @@ public class Generator {
         }
         return numEach;
     }
-
-
-    // todo: make version where all agents are constrained with all other agents
+    
     public JSONObject generate(String fileName) {
         // All agents within a cluster share a constraint
         JSONObject jExperiment = new JSONObject();
@@ -58,7 +56,6 @@ public class Generator {
         try {
             jExperiment.put("horizon", timeHorizon);
             jExperiment.put("priceSchema", priceSchema);
-            //jExperiment.put("agents", );
 
             JSONObject jAgents = new JSONObject();
 
@@ -94,7 +91,11 @@ public class Generator {
 
             ruleCSV = ruleGenerator.getRuleCSV();
             try {
-                FileWriter fileOut = new FileWriter(fileName, true);
+                FileWriter fileOut = new FileWriter(fileName, false); //trick to erase contents of file before starting
+                fileOut.write("");
+                fileOut.flush();
+                fileOut.close();
+                fileOut = new FileWriter(fileName, true);
                 for(String r : ruleCSV) {
                     fileOut.write(r + "\n");
                 }
@@ -111,6 +112,7 @@ public class Generator {
         return jExperiment;
     }
 
+    //generate only rules from the list
     public JSONObject generate(ArrayList<Integer> rList, String fileName) {
         // All agents within a cluster share a constraint
         JSONObject jExperiment = new JSONObject();
@@ -153,7 +155,11 @@ public class Generator {
 
             ruleCSV = ruleGenerator.getRuleCSV();
             try {
-                FileWriter fileOut = new FileWriter(fileName, true);
+                FileWriter fileOut = new FileWriter(fileName, false); //trick to erase contents of file before starting
+                fileOut.write("");
+                fileOut.flush();
+                fileOut.close();
+                fileOut = new FileWriter(fileName, true);
                 for(String r : ruleCSV) {
                     fileOut.write(r + "\n");
                 }
@@ -170,5 +176,57 @@ public class Generator {
         return jExperiment;
     }
 
+    
+    //regenerate the file with the saved rule data from a CSV
+    public JSONObject regenerate(String fileName) {
+        // All agents within a cluster share a constraint
+        JSONObject jExperiment = new JSONObject();
+        RuleParser parse = new RuleParser();
+        JSONObject jRules = parse.readFile(fileName);
+
+        try {
+            jExperiment.put("horizon", timeHorizon);
+            jExperiment.put("priceSchema", priceSchema);
+
+            JSONObject jAgents = new JSONObject();
+
+            int aCount = 0;
+            int hType = 0;
+            int[] numEachType = numEachHouse();
+            for (String agtName : topology.getAgents()) {
+
+                //shifts to the next type of house (small, medium, or large)
+                while(aCount == numEachType[hType] && hType < 3) {
+                    hType++;
+                    aCount = 0;
+                }
+
+                JSONObject jAgent = new JSONObject();
+
+                // Create array of neighbors
+                JSONArray jNeighbors = new JSONArray();
+
+                for (String neigName : topology.getNeighbors(agtName)) {
+                    if (neigName.compareTo(agtName) != 0)
+                        jNeighbors.put(neigName);
+                }
+
+                jAgent.put("houseType", hType);
+                jAgent.put("neighbors", jNeighbors);
+                jAgent.put("backgroundLoad", generateBackgroundLoad());
+                jAgent.put("rules", jRules.getJSONArray(agtName));
+                System.out.println("agtName: " + agtName);
+                System.out.println(jRules.getJSONArray(agtName).toString(2));
+                jAgents.put(agtName, jAgent);
+                aCount++;
+            }
+            jExperiment.put("agents", jAgents);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return jExperiment;
+    }
 
 }

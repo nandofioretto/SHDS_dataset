@@ -7,7 +7,12 @@ import java.util.Iterator;
 
 public class SHDS {
     public static void main(String[] args) {
-        int dev = 3; //number of devices to generate
+        String[] city = {
+                "DM", //Des Moines
+                "BO", //Boston
+                "SF"  //San Francisco
+        };
+        
         /**
         * Generating a topology:
         * Topology generateTopology(int cID, double gridLength, double clusters){ ... }
@@ -21,50 +26,64 @@ public class SHDS {
         *                    Each cluster is connected to one other cluster, connecting the whole graph together.
         * int gridLength --- Chunk of the city covered by the problem, this is in meters^2
         **/
-        System.out.println(args[0]);
-        JSONObject parameters = new JSONObject();
+        JSONObject settings = new JSONObject();
         try {
-            String content = Utilities.readFile(args[0]);
-            parameters = new JSONObject(content.trim());
+            String content = Utilities.readFile(Parameters.getSettingsPath());
+            settings = new JSONObject(content.trim());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //System.out.println(parameters.toString());
-        System.out.println(
-            "time_span: " + parameters.getInt("time_span") + "\n" +
-            "time_granularity: " + parameters.getInt("time_granularity") + "\n" +
-            //"house_ratio: " + parameters.getInt("time_span") + "\n" +
-            "num_devices: " + parameters.getInt("num_devices") + "\n" +
-            "gridLength: " + parameters.getInt("gridLength") + "\n" +
-            "clusterDiv: " + parameters.getInt("clusterDiv") + "\n"
-            );
+        if(args.length == 0) {
+            System.out.println("No arguments found. Please re-run with '-help' argument for more information.");
+            return;
+        }
+        Topology topo;
+        switch(args[0]) {
+            case "-datasets":
+                generateDatasets(settings.getInt("time_span"), settings.getInt("time_granularity"));
+            break;
+            case "-extras" :
+                generateExtras(settings.getInt("time_span"), settings.getInt("time_granularity"));
+            break;
+            case "-generate":
+                topo = generateTopology(
+                    Integer.parseInt(args[1]),
+                    Integer.parseInt(args[2]),
+                    Integer.parseInt(args[3])
+                    );
+                String fileName = "datasets/instance_"
+                    + city[Integer.parseInt(args[1])]
+                    + "_a" + topo.getNumAgents()
+                    + "_c" + topo.getNumClusters();
+                generateSHDSInstances(fileName, Integer.parseInt(args[4]), topo, settings.getInt("time_span"), settings.getInt("time_granularity"));
+            break;
+            case "-regenerate":
+                String temp = args[1].replaceAll("c", "").replaceAll("a", "");
+                String[] CSVFile = temp.split("_");
+                topo = new Topology(Integer.parseInt(CSVFile[2]), Integer.parseInt(CSVFile[3]));
+                //System.out.println("AGENTS: "+topo.getNumAgents());
+                regenDataset(args[1].replaceAll("_CSV.txt", ""), topo, settings.getInt("time_span"), settings.getInt("time_granularity"));
+            break;
+            case "-help":
+                System.out.println(
+                "-datasets\n\tgenerates datasets with same settings used in paper.\n" +
+                "-extras\n\tgenerates extra datasets mentioned in paper.\n"+
+                "-generate <cityID> <gridLength> <clusterDiv> <numDevices>\n\tgenerates a custom dataset with extra arguments as settings.\n" +
+                "-regenerate <fileName>\n\tregenerates a dataset from a CSV file (provided from generation)\n"
+                );
+            break;
+        }
         
-        
-        Topology topo = generateTopology(
-            parameters.getInt("city"),
-            parameters.getInt("gridLength"),
-            parameters.getInt("clusterDiv")
-        );
-        /**File name*/
-        String fileName = "instance_BO"
-                + "_a" + topo.getNumAgents()
-                + "_c" + topo.getNumClusters();// + ".json";
-                
-        System.out.println(fileName);
-
         /**
          * Generating the file
          * void generateSHDSInstances(String fileName, int nDevices, Topology topo){ ... }
          *
          * Takes in: 1) file name, 2) number of devices, and 3) topology of the problem
          **/
-        //generateSHDSInstances(fileName, parameters.getInt("num_devices"), topo, parameters.getInt("time_span"), parameters.getInt("time_granularity"));
-        generateExtras(parameters.getInt("time_span"), parameters.getInt("time_granularity"));
-        //generateDatasets(parameters.getInt("time_span"), parameters.getInt("time_granularity"));
+        //
+        //
+        //
     }
-
-
-
 
     public static void generateDatasets(int time_span, int time_granularity) {
         /**************************************************
@@ -105,11 +124,6 @@ public class SHDS {
                 512,
                 1024
         };
-
-        /*
-        int[] numDev = {
-                2, 3, 4 ,5 ,6, 7, 8, 9, 10 ,11, 12, 13, 14, 15, 16, 17, 18, 19, 20
-        };*/
 
         final int MIN_DEV = 2; final int MAX_DEV = 20; //minimum and maximum amount of devices per house to generate files for
         final int NUM_GRID_SIZES = 5; //number of different grid sizes to generate from the list above, some of the larger problems might be to big for some computers to handle
@@ -193,10 +207,6 @@ public class SHDS {
         }
     }
 
-
-
-
-
     /**
      * By knowing the city and size of grid, we can determine how many agents there should be in the problem
      * int cID ---------- City identifier. We have 3 cities here:
@@ -220,7 +230,7 @@ public class SHDS {
     }
 
 
-    //TODO add a comment here
+    //Generate a dataset
     public static void generateSHDSInstances(String fileName, int nDevices, Topology topo, int span, int granularity) {
         JSONArray devices = convertDevices(readDevices(), granularity);
         RuleGenerator ruleGen = new RuleGenerator(span, granularity, devices);
@@ -228,7 +238,23 @@ public class SHDS {
 
         try {
             FileWriter fileOut = new FileWriter(fileName+".json");
-            fileOut.write(gen.generate(fileName + "_CSV.txt").toString());
+            fileOut.write(gen.generate(fileName + "_CSV.txt").toString(2));
+            fileOut.flush();
+            fileOut.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    //Regenerate a dataset from a CSV file
+    public static void regenDataset(String fileName, Topology topo, int span, int granularity) {
+        JSONArray devices = convertDevices(readDevices(), granularity);
+        RuleGenerator ruleGen = new RuleGenerator(span, granularity, devices);
+        Generator gen = new Generator(topo, ruleGen, 0, new int[]{1, 1, 1});
+
+        try {
+            FileWriter fileOut = new FileWriter(fileName+".json");
+            fileOut.write(gen.regenerate(fileName + "_CSV.txt").toString(2));
             fileOut.flush();
             fileOut.close();
         } catch (IOException e) {
@@ -280,4 +306,15 @@ public class SHDS {
         return devices;
     }
 
+    private static int getCID(String city) {
+        switch(city) {
+            case "DM":
+                return 0;
+            case "BO":
+                return 1;
+            case "SF":
+                return 2;
+        }
+        return -1;
+    }
 }

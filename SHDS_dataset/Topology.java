@@ -26,7 +26,39 @@ public class Topology {
 
         generate();
     }
+    
+    //Only used for regenerating from CSV's
+    public Topology(int numAgents, int numClusters) {
+        this.numAgents   = numAgents;
+        this.numClusters = numClusters;
+        System.out.println("NUM OF AGENTS IN TOPO: " + numAgents);
+        agentsPerCluster = (int) Math.ceil(numAgents / (double) numClusters);
 
+        for (int cId = 0; cId < numClusters; cId++) {
+            clusters.add(new ArrayList<>());
+        }
+
+        for(int aId = 1, cId = 0; aId <= numAgents; aId++, cId++) {
+            if(cId == numClusters) cId = 0;
+            String agtName = "h" + aId;
+            (clusters.get(cId)).add(agtName);
+            mapToCluster.put(agtName, cId);
+        }
+
+        for (int aId = 1; aId <= numAgents; aId++) {
+            String agtName = "h" + aId;
+            int cId = mapToCluster.get(agtName);
+            neighbors.put(agtName, new ArrayList<>(clusters.get(cId)) );
+        }
+
+        for (int cId = 0; cId < numClusters-1; cId++) {
+            String this_c = Utilities.genRand(clusters.get(cId ));
+            String next_c = Utilities.genRand(clusters.get(cId + 1));
+            neighbors.get(this_c).add(next_c);
+            neighbors.get(next_c).add(this_c);
+        }
+    }
+    
     private void generate() {
 
         // Compute number of clusters and number of agents per cluster
@@ -34,7 +66,6 @@ public class Topology {
         numClusters = (int) Math.ceil(gridSideMt / actuatorRadiusMt);
         agentsPerCluster = (int) Math.ceil(numAgents / (double) numClusters);
 
-        //System.out.println("Generating " + numAgents + " AGENTS " + numClusters + " CLUSTERS " );
         for (int cId = 0; cId < numClusters; cId++) {
             clusters.add(new ArrayList<>());
         }

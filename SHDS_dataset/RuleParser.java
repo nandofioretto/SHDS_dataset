@@ -32,30 +32,42 @@ public class RuleParser {
             String rIndex = elements[1];
             ArrayList<String> currHouse = new ArrayList<>();
             ArrayList<String> currRule  = new ArrayList<>();
-            currRule.add(r);
-            while (in.hasNextLine()) {
-                r = in.nextLine();
-                elements = r.split(" ");
+            
+            do {
                 String h = elements[0];
-                if(!hIndex.equals(h)){
-                    JSONArray jRules = new JSONArray();
-                    for(int i = 0; i < currHouse.size(); i++) {
-                        jRules.put(currHouse.get(i));
-                    }
-                    houses.put("h"+h, jRules);
-                    hIndex = h;
-                    currHouse = new ArrayList<>();
-                }
-
-                if(elements[1].equals(rIndex)) {
-                    currRule.add(r);
-                } else {
+                String r_part = elements[2];
+                                
+                if(r_part.equals("0") && !rIndex.equals(elements[1])) {
+                    System.out.println("\trI = "+rIndex+"\tr = " + elements[1]);
                     currHouse.addAll(parseRule(Integer.parseInt(rIndex), currRule));
                     currRule = new ArrayList<>();
                     rIndex = elements[1];
                 }
-            }
+                
+                if(!hIndex.equals(h)) {
+                    System.out.println("hI = "+hIndex+"\th = " + h);
+                    JSONArray jRules = new JSONArray();
+                    for(int i = 0; i < currHouse.size(); i++) {
+                        jRules.put(currHouse.get(i));
+                    }
+                    houses.put("h"+hIndex, jRules);
+                    hIndex = h;
+                    currHouse = new ArrayList<>();
+                }
 
+                currRule.add(r);
+                r = in.nextLine();
+                elements = r.split(" ");
+            } while(in.hasNextLine());
+            //System.out.println(houses.toString(2));
+            //for the last house
+            currRule.add(r);
+            currHouse.addAll(parseRule(Integer.parseInt(rIndex), currRule));
+            JSONArray jRules = new JSONArray();
+            for(int i = 0; i < currHouse.size(); i++) {
+                jRules.put(currHouse.get(i));
+            }
+            houses.put("h"+hIndex, jRules);
             return houses;
         } catch(FileNotFoundException e) {
             e.printStackTrace();
