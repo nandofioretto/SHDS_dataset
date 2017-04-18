@@ -105,6 +105,12 @@ public class RuleGenerator {
         rule_CSV.add(hID+" "+rID+" "+rvID.ordinal()+" "+value);
     }
 
+    public void addBG(double[] bgLoads){
+        for(double d : bgLoads) {
+            rule_CSV.add(hID+" "+-1+" "+d);
+            //System.out.println(hID+" "+-1+" "+d);
+        }
+    }
 
     public JSONArray generateRules(int nDevices, int hType) {
         this.hType = hType;

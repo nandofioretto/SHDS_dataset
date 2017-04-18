@@ -22,10 +22,12 @@ public class RuleParser {
         TIME2
     }
 
-    public JSONObject readFile(String fileName){
+    public JSONArray readFile(String fileName){
         try {
             Scanner in = new Scanner(new File(fileName));
             JSONObject houses = new JSONObject();
+            JSONObject bgList = new JSONObject();
+            ArrayList<Double> bgLoads = new ArrayList<>();
             String r = in.nextLine();
             String[] elements = r.split(" ");
             String hIndex = elements[0];
@@ -35,32 +37,53 @@ public class RuleParser {
             
             do {
                 String h = elements[0];
-                String r_part = elements[2];
-                                
-                if(r_part.equals("0") && !rIndex.equals(elements[1])) {
-                    System.out.println("\trI = "+rIndex+"\tr = " + elements[1]);
-                    currHouse.addAll(parseRule(Integer.parseInt(rIndex), currRule));
-                    currRule = new ArrayList<>();
-                    rIndex = elements[1];
-                }
                 
-                if(!hIndex.equals(h)) {
-                    System.out.println("hI = "+hIndex+"\th = " + h);
-                    JSONArray jRules = new JSONArray();
-                    for(int i = 0; i < currHouse.size(); i++) {
-                        jRules.put(currHouse.get(i));
+                if(elements[1].equals("-1")) { //background loads
+                    bgLoads.add(Double.parseDouble(elements[2]));
+                } else {
+                    if(rIndex.equals("-1")) rIndex = elements[1];
+                    if(bgLoads.size() != 0) {
+                        double[] bgTemp = new double[bgLoads.size()];
+                        for(int i = 0; i < bgLoads.size(); i++) {
+                            bgTemp[i] = bgLoads.get(i);
+                            System.out.println(hIndex + " " + bgTemp[i]);
+                        }
+                        bgList.put("h"+h, bgTemp);
+                        System.out.println(bgTemp.length);
+                        bgLoads = new ArrayList<>();
                     }
-                    houses.put("h"+hIndex, jRules);
-                    hIndex = h;
-                    currHouse = new ArrayList<>();
+                    String r_part = elements[2];
+                    
+                    if(r_part.equals("0") && !rIndex.equals(elements[1])) {
+                        //System.out.println("\trI = "+rIndex+"\tr = " + elements[1]);
+                        currHouse.addAll(parseRule(Integer.parseInt(rIndex), currRule));
+                        currRule = new ArrayList<>();
+                        rIndex = elements[1];
+                    }
+                    
+                    if(!hIndex.equals(h)) {
+                        //System.out.println("hI = "+hIndex+"\th = " + h);
+                        JSONArray jRules = new JSONArray();
+                        for(int i = 0; i < currHouse.size(); i++) {
+                            jRules.put(currHouse.get(i));
+                        }
+                        houses.put("h"+hIndex, jRules);
+                        hIndex = h;
+                        currHouse = new ArrayList<>();
+                    }
+                    currRule.add(r);
                 }
-
-                currRule.add(r);
                 r = in.nextLine();
                 elements = r.split(" ");
             } while(in.hasNextLine());
             //System.out.println(houses.toString(2));
             //for the last house
+            /*
+            double[] bgTemp = new double[bgLoads.size()];
+            for(int i = 0; i < bgLoads.size(); i++) {
+                bgTemp[i] = bgLoads.get(i);
+            }
+            bgList.put("h"+hIndex, bgTemp);*/
             currRule.add(r);
             currHouse.addAll(parseRule(Integer.parseInt(rIndex), currRule));
             JSONArray jRules = new JSONArray();
@@ -68,7 +91,9 @@ public class RuleParser {
                 jRules.put(currHouse.get(i));
             }
             houses.put("h"+hIndex, jRules);
-            return houses;
+            JSONArray info = new JSONArray();
+            info.put(houses); info.put(bgList);
+            return info;
         } catch(FileNotFoundException e) {
             e.printStackTrace();
         }

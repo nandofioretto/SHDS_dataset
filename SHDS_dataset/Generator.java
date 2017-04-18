@@ -52,7 +52,7 @@ public class Generator {
     public JSONObject generate(String fileName) {
         // All agents within a cluster share a constraint
         JSONObject jExperiment = new JSONObject();
-
+        double[] bgLoads = new double[timeHorizon];
         try {
             jExperiment.put("horizon", timeHorizon);
             jExperiment.put("priceSchema", priceSchema);
@@ -82,7 +82,9 @@ public class Generator {
 
                 jAgent.put("houseType", hType);
                 jAgent.put("neighbors", jNeighbors);
-                jAgent.put("backgroundLoad", generateBackgroundLoad());
+                bgLoads = generateBackgroundLoad();
+                jAgent.put("backgroundLoad", bgLoads);
+                ruleGenerator.addBG(bgLoads);
                 jAgent.put("rules", ruleGenerator.generateRules(nDevices, hType));
                 jAgents.put(agtName, jAgent);
                 aCount++;
@@ -116,7 +118,7 @@ public class Generator {
     public JSONObject generate(ArrayList<Integer> rList, String fileName) {
         // All agents within a cluster share a constraint
         JSONObject jExperiment = new JSONObject();
-
+        double[] bgLoads = new double[timeHorizon];
         try {
             jExperiment.put("horizon", timeHorizon);
             jExperiment.put("priceSchema", priceSchema);
@@ -146,7 +148,9 @@ public class Generator {
 
                 jAgent.put("houseType", hType);
                 jAgent.put("neighbors", jNeighbors);
-                jAgent.put("backgroundLoad", generateBackgroundLoad());
+                bgLoads = generateBackgroundLoad();
+                jAgent.put("backgroundLoad", bgLoads);
+                ruleGenerator.addBG(bgLoads);
                 jAgent.put("rules", ruleGenerator.generateRules(rList.size(), hType, rList));
                 jAgents.put(agtName, jAgent);
                 aCount++;
@@ -182,8 +186,9 @@ public class Generator {
         // All agents within a cluster share a constraint
         JSONObject jExperiment = new JSONObject();
         RuleParser parse = new RuleParser();
-        JSONObject jRules = parse.readFile(fileName);
-
+        JSONArray house = parse.readFile(fileName);
+        JSONObject jRules = house.getJSONObject(0);
+        JSONObject jBgLoads = house.getJSONObject(1);
         try {
             jExperiment.put("horizon", timeHorizon);
             jExperiment.put("priceSchema", priceSchema);
@@ -213,10 +218,15 @@ public class Generator {
 
                 jAgent.put("houseType", hType);
                 jAgent.put("neighbors", jNeighbors);
-                jAgent.put("backgroundLoad", generateBackgroundLoad());
+                double[] bgLoads = (double[])jBgLoads.get(agtName);
+                /*for(double d : bgLoads) {
+                    System.out.print(d + " ");
+                }*/
+                //System.out.println();
+                jAgent.put("backgroundLoad", jBgLoads.get(agtName));
                 jAgent.put("rules", jRules.getJSONArray(agtName));
-                System.out.println("agtName: " + agtName);
-                System.out.println(jRules.getJSONArray(agtName).toString(2));
+                //System.out.println("agtName: " + agtName);
+                //System.out.println(jRules.getJSONArray(agtName).toString(2));
                 jAgents.put(agtName, jAgent);
                 aCount++;
             }
