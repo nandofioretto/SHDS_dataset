@@ -95,7 +95,7 @@ If you wish to alter these devices, add new devices / sensor properties, you may
 
 ## References:
 - William Kluegel, Muhammad Aamir Iqbal, Ferdinando Fioretto, William Yeoh, Enrico Pontelli: 
-("A Realistic Dataset for the Smart Home Device Scheduling Problem for DCOPs")[https://www.cs.nmsu.edu/~wyeoh/OPTMAS2017/]. 
+[A Realistic Dataset for the Smart Home Device Scheduling Problem for DCOPs](https://www.cs.nmsu.edu/~wyeoh/OPTMAS2017/). 
 In Proceedings of the International Workshop on Optimisation in Multi-Agent Systems (OPTMAS), 2017.	
 
 
@@ -110,5 +110,5 @@ In Proceedings of the International Workshop on Optimisation in Multi-Agent Syst
 ```
 
 ## Contacts
-Ferdinando Fioretto: fioretto@umich.edu
-William Kluegel: wkluegel@cs.nmsu.edu
+- Ferdinando Fioretto: fioretto@umich.edu
+- William Kluegel: wkluegel@cs.nmsu.edu
