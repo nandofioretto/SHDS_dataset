@@ -87,7 +87,7 @@
         },
         "charge": {
           "power_consumed": 17.28,
-          "effects": [{"property": "charge", "delta": 10.2}]
+          "effects": [{"property": "charge", "delta": 19.98}]
         }
       }
     },
@@ -95,7 +95,7 @@
     "GE_WSM2420D3WW_wash" : {
       "type": "actuator",
       "subtype": "cloths_washer",
-      "location": "room",
+      "location": "LG_WM2016CW",
       "actions": {
         "off": {
           "power_consumed": 0.0,
@@ -111,7 +111,7 @@
     "GE_WSM2420D3WW_dry" : {
       "type": "actuator",
       "subtype": "cloths_dryer",
-      "location": "room",
+      "location": "GE_WSM2420D3WW",
       "actions": {
         "off": {
           "power_consumed": 0.0,
@@ -225,7 +225,7 @@
       "type": "sensor",
       "current_state": 0,
       "subtype": "cloths_washer",
-      "location": "GE_WSM2420D3WW",
+      "location": "LG_WM2016CW",
       "sensing_properties": ["laundry_wash"]
     },
 
@@ -341,7 +341,7 @@
         },
         "charge": {
           "power_consumed": 17.28,
-          "effects": [{"property": "charge", "delta": 10.2}]
+          "effects": [{"property": "charge", "delta": 19.98}]
         }
       }
     },
@@ -349,7 +349,7 @@
     "GE_WSM2420D3WW_wash" : {
       "type": "actuator",
       "subtype": "cloths_washer",
-      "location": "room",
+      "location": "LG_WM2016CW",
       "actions": {
         "off": {
           "power_consumed": 0.0,
@@ -365,7 +365,7 @@
     "GE_WSM2420D3WW_dry" : {
       "type": "actuator",
       "subtype": "cloths_dryer",
-      "location": "room",
+      "location": "GE_WSM2420D3WW",
       "actions": {
         "off": {
           "power_consumed": 0.0,
@@ -479,7 +479,7 @@
       "type": "sensor",
       "current_state": 0,
       "subtype": "cloths_washer",
-      "location": "GE_WSM2420D3WW",
+      "location": "LG_WM2016CW",
       "sensing_properties": ["laundry_wash"]
     },
 
@@ -595,7 +595,7 @@
         },
         "charge": {
           "power_consumed": 17.28,
-          "effects": [{"property": "charge", "delta": 10.2}]
+          "effects": [{"property": "charge", "delta": 19.98}]
         }
       }
     },
@@ -603,7 +603,7 @@
     "GE_WSM2420D3WW_wash" : {
       "type": "actuator",
       "subtype": "cloths_washer",
-      "location": "room",
+      "location": "LG_WM2016CW",
       "actions": {
         "off": {
           "power_consumed": 0.0,
@@ -619,7 +619,7 @@
     "GE_WSM2420D3WW_dry" : {
       "type": "actuator",
       "subtype": "cloths_dryer",
-      "location": "room",
+      "location": "GE_WSM2420D3WW",
       "actions": {
         "off": {
           "power_consumed": 0.0,
@@ -733,7 +733,7 @@
       "type": "sensor",
       "current_state": 0,
       "subtype": "cloths_washer",
-      "location": "GE_WSM2420D3WW",
+      "location": "LG_WM2016CW",
       "sensing_properties": ["laundry_wash"]
     },
 
