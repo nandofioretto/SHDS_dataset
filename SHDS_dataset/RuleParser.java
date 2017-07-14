@@ -22,14 +22,24 @@ public class RuleParser {
         TIME2
     }
 
+    //todo add neighbors
     public JSONArray readFile(String fileName){
         try {
             Scanner in = new Scanner(new File(fileName));
             JSONObject houses = new JSONObject();
             JSONObject bgList = new JSONObject();
             ArrayList<Double> bgLoads = new ArrayList<>();
+            JSONObject houseType = new JSONObject();
             String r = in.nextLine();
             String[] elements = r.split(" ");
+
+            String horizon = elements[0];
+            String granularity = elements[1];
+            String numAgents = elements[2];
+            String numClusters = elements[3];
+
+            r = in.nextLine();
+            elements = r.split(" ");
             String hIndex = elements[0];
             String rIndex = elements[1];
             ArrayList<String> currHouse = new ArrayList<>();
@@ -40,8 +50,10 @@ public class RuleParser {
                 
                 if(elements[1].equals("-1")) { //background loads
                     bgLoads.add(Double.parseDouble(elements[2]));
+                } else if(elements[1].equals("-2")) { //house type
+                    houseType.put("h"+h, Integer.parseInt(elements[2]));
                 } else {
-                    if(rIndex.equals("-1")) rIndex = elements[1];
+                    if(rIndex.equals("-1") || rIndex.equals("-2")) rIndex = elements[1];
                     if(bgLoads.size() != 0) {
                         double[] bgTemp = new double[bgLoads.size()];
                         for(int i = 0; i < bgLoads.size(); i++) {
@@ -92,7 +104,9 @@ public class RuleParser {
             }
             houses.put("h"+hIndex, jRules);
             JSONArray info = new JSONArray();
-            info.put(houses); info.put(bgList);
+            info.put(horizon); info.put(granularity);
+            info.put(numAgents); info.put(numClusters);
+            info.put(houses); info.put(bgList); info.put(houseType);
             return info;
         } catch(FileNotFoundException e) {
             e.printStackTrace();
@@ -102,7 +116,8 @@ public class RuleParser {
 
     public ArrayList<String> parseRule(int rID, ArrayList<String> list) {
         String rule = "1";
-        rule += " " + getLocation(rID) + " " + getProperty(rID);
+        // todo add 'cycle' to csv
+        rule += " " + RuleGenerator.getRuleLocation(rID, 0) + " " + getProperty(rID);
         int state = 0;
         for(String s : list) {
             String[] elements = s.split(" ");
@@ -112,7 +127,8 @@ public class RuleParser {
 
         ArrayList<String> all = new ArrayList<>();
         all.add(rule);
-        all.addAll(getPassiveRules(rID, state));
+
+        all.addAll(RuleGenerator.getPassiveRules(rID, 0, state));
 
         return all;
     }

@@ -33,22 +33,15 @@ public class RuleGenerator {
         this.horizon   = time_span * 60 / time_gran;
 
         this.houses = devices;
-        sensorMaxDelta = new double[3][14]; // we include 13 sensor properties and 3 house sizes, todo make this dynamic
+        sensorMaxDelta = new double[3][14]; // we include 14 sensor properties and 3 house sizes, todo make this dynamic
         sensorMinDelta = new double[3][14];
         sensorValues   = new double[3][14];
-        for(double[] dd : sensorMaxDelta) { //setting all values to 0
-            for(double d : dd) {
-                d = 0;
-            }
-        }
-        for(double[] dd : sensorMinDelta) { //setting all values to 0
-            for(double d : dd) {
-                d = 0;
-            }
-        }
-        for(double[] dd : sensorValues) {
-            for(double d : dd) {
-                d = 0;
+
+        for(int h = 0; h < 3; h++) { // for each of the 3 house sizes
+            for(int sp = 0; sp < 14; sp++){ //for each sensor property
+                sensorMaxDelta[h][sp] = 0;
+                sensorMinDelta[h][sp] = 0;
+                sensorValues[h][sp] = 0;
             }
         }
         findBounds();
@@ -58,44 +51,12 @@ public class RuleGenerator {
     }
 
     public ArrayList<String> getRuleCSV(){ return rule_CSV; }
-/*
-    public JSONArray generateRules(int nDevices, int hType) {
-        this.hType = hType;
-        JSONArray jArray = new JSONArray();
-        int cycle = 0;
-        int rId = 1;
-
-
-        // hType (house ID) will work as follows:
-        // 1) small, 2) medium, 3) large
-        // set dev_table = devices[hType] to set whether this is for small, medium, or large house so rules can be dynamic
-        Random rand = new Random();
-        ArrayList<Integer> list = new ArrayList<>(8);
-        for(int i = 1; i <= 8; i++) {
-            list.add(i);
-        }
-        boolean empty = false;
-        while(rId <= nDevices)
-        {
-            if(empty) {
-                list = new ArrayList<>(8);
-                for(int i = 0; i <= 8; i++) {
-                    list.add(i);
-                }
-                empty = false;
-                cycle++;
-            }
-
-            for (String rule : rulePicker(list.remove(rand.nextInt(list.size())), cycle))
-                jArray.put(rule);
-            rId++;
-            if(list.size() == 0) empty = true;
-
-        }
-
-        return jArray;
+    public int getSpan() {
+        return time_span;
     }
-*/
+    public int getGran() {
+        return time_gran;
+    }
 
     public void addCSV(RuleParser.rand_var_id rvID, int value){
         rule_CSV.add(hID+" "+rID+" "+rvID.ordinal()+" "+value);
@@ -110,6 +71,14 @@ public class RuleGenerator {
             rule_CSV.add(hID+" "+-1+" "+d);
             //System.out.println(hID+" "+-1+" "+d);
         }
+    }
+
+    public void addProperties(int horizon, int granularity, int agents, int clusters) {
+        rule_CSV.add(horizon+" "+granularity+" "+agents+" "+clusters);
+    }
+
+    public void addHouseType(int houseType){
+        rule_CSV.add(hID+" "+-2+" "+houseType);
     }
 
     public JSONArray generateRules(int nDevices, int hType) {
@@ -205,7 +174,6 @@ public class RuleGenerator {
         int cycle = 0;
         int rId = 1;
 
-
         // hType (house ID) will work as follows:
         // 1) small, 2) medium, 3) large
         // set dev_table = devices[hType] to set whether this is for small, medium, or large house so rules can be dynamic
@@ -236,28 +204,132 @@ public class RuleGenerator {
         return jArray;
     }
 
+    // returns a list of rules for the given device index
     private ArrayList<String> rulePicker(int index, int cycle){
         rID = index;
+        ArrayList<String> rules = new ArrayList<>();
+        String device = getRuleLocation(index, cycle);
+        String property = getRuleProp(index);
+        int state;
+        String relation;
+        String predicate;
+
         switch(index) {
+            // Washer
             case 1:
-                return generateLaundryWashRules(cycle);
+                relation = "geq";
+                state = Utilities.genRand(new int[]{60}); // goal state
+                predicate = Utilities.genRand(new String[]{"before", "after", "at"});
+                break;
+
+            // Dryer
             case 2:
-                return generateLaundryDryRules(cycle);
+                relation = "geq";
+                state = Utilities.genRand(new int[]{60}); // goal state
+                predicate = Utilities.genRand(new String[]{"before", "after", "at"});
+                break;
+
+            // Dishwasher
             case 3:
-                return generateDishWashRules(cycle);
+                relation = "geq";
+                state = Utilities.genRand(new int[]{60}); // goal state
+                predicate = Utilities.genRand(new String[]{"before", "after", "at"});
+                break;
+
+            // Oven
             case 4:
-                return generateBakeRules(cycle);
-            case 5:
-                return generateWaterTempRules(cycle);
+                state = Utilities.genRand(new int[]{60, 75, 120, 150});
+                relation = "eq";
+                predicate = Utilities.genRand(new String[]{"before", "after", "at"});
+                break;
+
+            // Water Heater
+            case 5: // TODO: find out if we need active rules for the water heater && fix the rules so they meet bacteria safety guidelines
+                state = Utilities.genRand(45, 60);
+                relation = Utilities.genRand(new String[]{"geq", "gt"});
+                predicate = Utilities.genRand(new String[]{"before", "after", "at"});
+                break;
+
+            // Electric Vehicle
             case 6:
-                return generateEVRules(cycle);
+                state = Utilities.genRand(50, 85);
+                relation = Utilities.genRand(new String[]{"geq", "gt"});
+                predicate = Utilities.genRand(new String[]{"before", "after", "at"});
+                break;
+
+            // Heater
             case 7:
-                return generateTempHeatRules(cycle);
+                state = Utilities.genRand(20, 25);
+                relation = Utilities.genRand(new String[]{"geq", "gt"});
+                predicate = randPredicate();
+                break;
+
+            // Vacuum Robot
             case 8:
-                return generateCleanlinessRules(cycle);
+                state = Utilities.genRand(50, 80);
+                relation = Utilities.genRand(new String[]{"geq", "gt"});
+                predicate = Utilities.genRand(new String[]{"before", "after", "at"});
+                break;
+
+            // If device index is out of bounds
+            default:
+                System.err.println("Error: Device index out of bounds (during rule generation).");
+                device = "NULL";
+                property = "NULL";
+                relation = "NULL";
+                state = -1;
+                predicate = "NULL";
         }
-        return new ArrayList<>();
+
+        rules.add(activeGen(device, property, relation, state, predicate));
+        rules.addAll(getPassiveRules(index, cycle, state));
+        return rules;
     }
+
+
+    public static ArrayList<String> getPassiveRules(int index, int cycle, int state){
+        ArrayList<String> rules = new ArrayList<>();
+        String device = getRuleLocation(index, cycle);
+        String property = getRuleProp(index);
+        switch (index){
+            case 1:
+                rules.add("0 " + device + " " + property + " geq 0");
+                rules.add("0 " + device + " " + property + " leq " + state);
+                break;
+            case 2:
+                rules.add("0 " + device + " " + property + " geq 0");
+                rules.add("0 " + device + " " + property + " leq " + state);
+                break;
+            case 3:
+                rules.add("0 " + device + " " + property + " geq 0");
+                rules.add("0 " + device + " " + property + " leq " + state);
+                break;
+            case 4:
+                rules.add("0 " + device + " " + property + " geq 0");
+                rules.add("0 " + device + " " + property + " leq " + state);
+                break;
+            case 5:
+                rules.add("0 " + device + " " + property + " geq 30");
+                rules.add("0 " + device + " " + property + " leq 70");
+                break;
+            case 6:
+                rules.add("0 " + device + " " + property + " geq 0");
+                rules.add("0 " + device + " " + property + " leq 100");
+                break;
+            case 7:
+                rules.add("0 " + device + " " + property + " geq 0");
+                rules.add("0 " + device + " " + property + " leq 33");
+                break;
+            case 8:
+                rules.add("0 " + device + " " + property + " geq 0");
+                rules.add("0 " + device + " " + property + " leq 100");
+                rules.add("0 Roomba_880" + ((cycle>0) ? ("_" + cycle) : "") + " charge geq 0");
+                rules.add("0 Roomba_880" + ((cycle>0) ? ("_" + cycle) : "") + " charge leq 100");
+                break;
+        }
+        return rules;
+    }
+
 
     /**Returns a random time predicate with spacing around it.*/
     private String randPredicate() {
@@ -288,8 +360,8 @@ public class RuleGenerator {
                 return rule +     " at " + time1;
             case "within":
                 do {
-                    time1 = Utilities.genRand(minTime + 2, horizon-1);
-                    time2 = Utilities.genRand(minTime + 2, horizon-1);
+                    time1 = Utilities.genRand(minTime + 2, Math.min(minTime + 5, horizon-1));
+                    time2 = Utilities.genRand(minTime + 2, Math.min(minTime + 5, horizon-1));
                 } while(time1 == time2);
                 addCSV(RuleParser.rand_var_id.TIME1, Math.min(time1, time2));
                 addCSV(RuleParser.rand_var_id.TIME2, Math.max(time1, time2));
@@ -298,192 +370,7 @@ public class RuleGenerator {
         return null;
     }
 
-    private String[] activeGen(String device, String property, int state1, int state2, String predicate) { //this version is used to keep values between two values for a number of timesteps
-        String rule1 = "1 " + device + " " + property + " ";
-        String rule2 = rule1;
-        int time1; int time2;
-        switch(predicate) {
-            case "before":
-                time1 = Utilities.genRand(minTimeToComplete(getSensorID(property), "geq", state1) + 1, horizon);
-                rule1 += "geq" + state1 + " before " + time1;
-                rule2 += "leq" + state2 + " before " + time1;
-                return new String[]{rule1, rule2};
-            case "after":
-                time1 = Utilities.genRand(1, horizon - minTimeToComplete(getSensorID(property), "geq", state1) - 1);
-                rule1 += "geq" + state1 + " after " + time1;
-                rule2 += "leq" + state2 + " after " + time1;
-                return new String[]{rule1, rule2};
-            case "at":
-                time1 = Utilities.genRand(minTimeToComplete(getSensorID(property), "geq", state1), horizon);
-                rule1 += "geq" + state1 + " at " + time1;
-                rule2 += "leq" + state2 + " at " + time1;
-                return new String[]{rule1, rule2};
-            case "within":
-                do {
-                    time1 = Utilities.genRand(minTimeToComplete(getSensorID(property), "geq", state1), horizon);
-                    time2 = Utilities.genRand(minTimeToComplete(getSensorID(property), "geq", state1), horizon);
-                } while(time1 == time2);
-                rule1 += "geq" + state1 + " within " + Math.min(time1, time2) + " " + Math.max(time1, time2);
-                rule2 += "leq" + state2 + " within " + Math.min(time1, time2) + " " + Math.max(time1, time2);
-                return new String[]{rule1, rule2};
-        }
-        return null;
-    }
-
-    private ArrayList<String> generateLaundryWashRules(int i) {
-        ArrayList<String> rules = new ArrayList<>();
-        String device = "LG_WM2016CW" + ((i>0) ? ("_" + i) : "");
-        String property = "laundry_wash";
-
-        int state = Utilities.genRand(new int[]{45, 60}); // goal state
-        String relation = "geq";
-
-        rules.add(activeGen(device, property, relation, state, randPredicate()));
-        rules.add("0 " + device + " " + property + " geq 0");
-        rules.add("0 " + device + " " + property + " leq 60");
-        return rules;
-    }
-
-    private ArrayList<String> generateLaundryDryRules(int i) {
-        ArrayList<String> rules = new ArrayList<>();
-        String device = "GE_WSM2420D3WW" + ((i>0) ? ("_" + i) : "");
-        String property = "laundry_dry";
-
-        int state = Utilities.genRand(new int[]{45, 60});
-        String relation = "geq";
-
-        rules.add(activeGen(device, property, relation, state, randPredicate()));
-        rules.add("0 " + device + " " + property + " geq 0");
-        rules.add("0 " + device + " " + property + " leq 60");
-        return rules;
-    }
-
-    private ArrayList<String> generateDishWashRules(int i) {
-        ArrayList<String> rules = new ArrayList<>();
-        String device = "Kenmore_665.13242K900" + ((i>0) ? ("_" + i) : "");
-        String property = "dish_wash";
-
-        int state = Utilities.genRand(new int[]{45, 60});
-        String relation = "geq";
-
-        rules.add(activeGen(device, property, relation, state, randPredicate()));
-        rules.add("0 " + device + " " + property + " geq 0");
-        rules.add("0 " + device + " " + property + " leq 60");
-        return rules;
-    }
-
-    private ArrayList<String> generateBakeRules(int i) {
-        ArrayList<String> rules = new ArrayList<>();
-        String device = "Kenmore_790.91312013" + ((i>0) ? ("_" + i) : "");
-        String property = "bake";
-
-        int state = Utilities.genRand(new int[]{60, 75, 120, 150});
-        String relation = "eq";
-
-        rules.add(activeGen(device, property, relation, state, randPredicate()));
-        rules.add("0 " + device + " " + property + " geq 0");
-        rules.add("0 " + device + " " + property + " leq " + state);
-        return rules;
-    }
-
-    private ArrayList<String> generateWaterTempRules(int i) {
-        ArrayList<String> rules = new ArrayList<>();
-        String device = "water_tank" + ((i>0) ? ("_" + i) : "");
-        String property = "water_temp";
-
-        int state = Utilities.genRand(15, 40);
-        String relation = Utilities.genRand(new String[]{"geq", "gt"});
-
-        //int state1 = Utilities.genRand(10+(int)sensorMinDelta[hType][getSensorID(property)], 40 - (int)sensorMaxDelta[hType][getSensorID(property)]);
-        //int state2 = Utilities.genRand(state1+(int)sensorMaxDelta[hType][getSensorID(property)], 42);
-        //String[] temp_rules = activeGen(device, property, state1, state2, randPredicate()); // an upper and lower temperature preference
-        //rules.add(temp_rules[0]); rules.add(temp_rules[1]);
-
-        rules.add(activeGen(device, property, relation, state, randPredicate()));
-        rules.add("0 " + device + " " + property + " geq 10");
-        rules.add("0 " + device + " " + property + " leq 55");
-        return rules;
-    }
-
-    private ArrayList<String> generateEVRules(int i) {
-        ArrayList<String> rules = new ArrayList<>();
-        String device = "Tesla_S" + ((i>0) ? ("_" + i) : "");
-        String property = "charge";
-
-        int state = Utilities.genRand(50, 65);
-        String relation = Utilities.genRand(new String[]{"geq", "gt"});
-        String timePred = Utilities.genRand(new String[]{"before", "after", "at"});
-        int time1, time2;
-        String rule = "1 " + device + " " + property + " " + relation + " " + state;
-        double start_state = 10; double delta = 10.2;
-        int minTime = (int) ((state - start_state) / delta) + 1;
-        addCSV(RuleParser.rand_var_id.RELATION,   relation);
-        addCSV(RuleParser.rand_var_id.STATE,         state);
-        addCSV(RuleParser.rand_var_id.PREDICATE,  timePred);
-        switch(timePred) {
-            case "before":
-                time1 = Utilities.genRand(minTime + 2, horizon-1);
-                addCSV(RuleParser.rand_var_id.TIME1, time1);
-                rule += " before " + time1;
-                break;
-            case "after":
-                time1 = Utilities.genRand(1, horizon - minTime - 2);
-                addCSV(RuleParser.rand_var_id.TIME1, time1);
-                rule +=  " after " + time1;
-                break;
-            case "at":
-                time1 = Utilities.genRand(minTime + 2, horizon-1);
-                addCSV(RuleParser.rand_var_id.TIME1, time1);
-                rule +=     " at " + time1;
-                break;
-            case "within":
-                do {
-                    time1 = Utilities.genRand(minTime + 2, horizon-1);
-                    time2 = Utilities.genRand(minTime + 2, horizon-1);
-                } while(time1 == time2);
-                addCSV(RuleParser.rand_var_id.TIME1, Math.min(time1, time2));
-                addCSV(RuleParser.rand_var_id.TIME2, Math.max(time1, time2));
-                rule += " within " + Math.min(time1, time2) + " " + Math.max(time1, time2);
-                break;
-        }
-        rules.add(rule);
-        
-        rules.add("0 " + device + " " + property + " geq 0");
-        rules.add("0 " + device + " " + property + " leq 100");
-        return rules;
-    }
-
-    private ArrayList<String> generateTempHeatRules(int i) {
-        ArrayList<String> rules = new ArrayList<>();
-        String device = "room" + ((i>0) ? ("_" + i) : "");
-        String property = "temperature_heat";
-
-        int state = Utilities.genRand(17, 24);
-        String relation = Utilities.genRand(new String[]{"geq", "gt"});
-
-        rules.add(activeGen(device, property, relation, state, randPredicate()));
-        rules.add("0 " + device + " " + property + " geq 0");
-        rules.add("0 " + device + " " + property + " leq 33");
-        return rules;
-    }
-
-    private ArrayList<String> generateCleanlinessRules(int i) {
-        ArrayList<String> rules = new ArrayList<>();
-        String device = "room" + ((i>0) ? ("_" + i) : "");
-        String property = "cleanliness";
-
-        int state = Utilities.genRand(50, 80);
-        String relation = Utilities.genRand(new String[]{"geq", "gt"});
-
-        rules.add(activeGen(device, property, relation, state, randPredicate()));
-        rules.add("0 " + device + " " + property + " geq 0");
-        rules.add("0 " + device + " " + property + " leq 100");
-        //rules.add("0 iRobot_651" + ((i>0) ? ("_" + i) : "") + " charge geq 0");
-        //rules.add("0 iRobot_651" + ((i>0) ? ("_" + i) : "") + " charge leq 100");
-        return rules;
-    }
-
-    //TODO: make this better
+    //TODO: add locations (i.e. there are two charge sensor properties, one on the Roomba and one on the Tesla_S
     private void findBounds() {
         for(int i = 0; i < houses.length(); i++) {
             JSONObject devices = houses.getJSONObject(i);
@@ -499,6 +386,9 @@ public class RuleGenerator {
                         for (int j = 0; j < effects.length(); j++) {
                             JSONObject e = effects.getJSONObject(j);
                             int sID = getSensorID(e.getString("property"));
+                            if(sID == 4 && !d_n.equals("Tesla_S")) { // quick fix for EV charge, we want it to be considered the 'max' delta for charge since the roomba also has a charge SP
+                                break;
+                            }
                             sensorMaxDelta[i][sID] = Math.max(sensorMaxDelta[i][sID], e.getDouble("delta"));
                             sensorMinDelta[i][sID] = Math.min(sensorMinDelta[i][sID], e.getDouble("delta"));
                         }
@@ -515,9 +405,11 @@ public class RuleGenerator {
     }
 
     private int getSensorID(String sp) {
-        // FOR NOW, since we use two separate sensor properties for air_temperature, I'm going to make temperature_cool be 0 until we decide if it is staying.
+        // FOR NOW, since we use two separate sensor properties for air_temperature
+        // (to create a logical separation between the cooling and heating unit since it wouldn't make sense to use both in the same model)
         /*
-        01 air temperature
+        00 air temperature cool
+        01 air temperature heat
         02 ﬂoor cleanliness (dust)
         03 temperature
         04 battery charge
@@ -550,11 +442,51 @@ public class RuleGenerator {
         }
     }
 
-    private int minTimeToComplete(int sID, double goal) { // minimum time needed to complete an objective with only the device that affects a property the most
-        int time = 0;
-        double prog = 0;
-        while(prog < goal){ prog += sensorMaxDelta[hType][sID]; time++;}
-        return time;
+    public static String getRuleProp(int index) {
+        switch(index) {
+            case 1: return  "laundry_wash";
+            case 2: return  "laundry_dry";
+            case 3: return  "dish_wash";
+            case 4: return  "bake";
+            case 5: return  "water_temp";
+            case 6: return  "charge";
+            case 7: return  "temperature_heat";
+            case 8: return  "cleanliness";
+            default: return "NULL";
+        }
+    }
+
+    public static String getRuleLocation(int index, int cycle) {
+        String loc;
+        switch(index) {
+            case 1:
+                loc = "LG_WM2016CW";
+                break;
+            case 2:
+                loc = "GE_WSM2420D3WW";
+                break;
+            case 3:
+                loc = "Kenmore_665.13242K900";
+                break;
+            case 4:
+                loc = "Kenmore_790.91312013";
+                break;
+            case 5:
+                loc = "water_tank";
+                break;
+            case 6:
+                loc = "Tesla_S";
+                break;
+            case 7:
+                loc = "room";
+                break;
+            case 8:
+                loc = "room";
+                break;
+            default:
+                loc = "NULL";
+        }
+        return loc  + ((cycle>0) ? ("_" + cycle) : "");
     }
 
 
@@ -570,7 +502,7 @@ public class RuleGenerator {
                 }
                 return time;
             case "leq":
-                while(prog >  goal) {
+                while(prog > goal) {
                     prog += sensorMinDelta[hType][sID];
                     time++;
                     if(time > horizon) return -1;

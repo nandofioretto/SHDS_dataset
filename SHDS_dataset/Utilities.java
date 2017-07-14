@@ -1,6 +1,8 @@
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -12,11 +14,36 @@ public class Utilities {
 
     private static Random rand = new Random();
 
-    public static String readFile(String path)
-            throws IOException
-    {
+    // rounds d to the dec_place decimal place --- uses RoundingMode.HALF_EVEN
+    public static double round(double d, int dec_place) {
+        StringBuilder decString = new StringBuilder("#.");
+        for(int i = 0; i < dec_place; i++) {
+            decString.append("#");
+        }
+        DecimalFormat df = new DecimalFormat(decString.toString());
+        return Double.parseDouble(df.format(d));
+    }
+
+    public static String readFile(String path) throws IOException {
         byte[] encoded = Files.readAllBytes(Paths.get(path));
         return new String(encoded);
+    }
+
+    public static void writeFile(String fileName, ArrayList<String> data){
+        try {
+            FileWriter fileOut = new FileWriter(fileName, false); //trick to erase contents of file before starting
+            fileOut.write("");
+            fileOut.flush();
+            fileOut.close();
+            fileOut = new FileWriter(fileName, true);
+            for(String d : data) {
+                fileOut.write(d + "\n");
+            }
+            fileOut.flush();
+            fileOut.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static double getMax (double[] array) {

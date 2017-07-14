@@ -10,8 +10,8 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class Generator {
 
-    private final int timeHorizon = Parameters.getHorizon();
-    private final double[] priceSchema = Parameters.getPriceSchema();
+    private final int timeHorizon;
+    private final double[] priceSchema;
     private int nDevices;
     private RuleGenerator ruleGenerator;
     private Topology topology;
@@ -24,13 +24,15 @@ public class Generator {
         this.ruleGenerator = ruleGenerator;
         this.nDevices = nDevices;
         this.houseRatio = houseRatio;
+        priceSchema = Parameters.getPriceSchema();
+        timeHorizon = (ruleGenerator.getSpan() * 60 / ruleGenerator.getGran());
     }
 
 
     private double[] generateBackgroundLoad() {
         double[] bg = new double[timeHorizon];
         for (int i = 0; i < timeHorizon; i++) {
-            bg[i] = ThreadLocalRandom.current().nextDouble(0, 0.3);
+            bg[i] = Utilities.round(ThreadLocalRandom.current().nextDouble(0, 0.3), 2);
         }
         return bg;
     }
@@ -52,10 +54,12 @@ public class Generator {
     public JSONObject generate(String fileName) {
         // All agents within a cluster share a constraint
         JSONObject jExperiment = new JSONObject();
-        double[] bgLoads = new double[timeHorizon];
+        double[] bgLoads;
         try {
             jExperiment.put("horizon", timeHorizon);
             jExperiment.put("priceSchema", priceSchema);
+            jExperiment.put("granularity", ruleGenerator.getGran());
+            ruleGenerator.addProperties(timeHorizon, ruleGenerator.getGran(), topology.getNumAgents(), topology.getNumClusters()); // <-- todo fix this goofy mess
 
             JSONObject jAgents = new JSONObject();
 
@@ -81,6 +85,7 @@ public class Generator {
                 }
 
                 jAgent.put("houseType", hType);
+                ruleGenerator.addHouseType(hType);
                 jAgent.put("neighbors", jNeighbors);
                 bgLoads = generateBackgroundLoad();
                 jAgent.put("backgroundLoad", bgLoads);
@@ -92,20 +97,7 @@ public class Generator {
             jExperiment.put("agents", jAgents);
 
             ruleCSV = ruleGenerator.getRuleCSV();
-            try {
-                FileWriter fileOut = new FileWriter(fileName, false); //trick to erase contents of file before starting
-                fileOut.write("");
-                fileOut.flush();
-                fileOut.close();
-                fileOut = new FileWriter(fileName, true);
-                for(String r : ruleCSV) {
-                    fileOut.write(r + "\n");
-                }
-                fileOut.flush();
-                fileOut.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            Utilities.writeFile(fileName, ruleCSV);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -115,14 +107,15 @@ public class Generator {
     }
 
     //generate only rules from the list
-    public JSONObject generate(ArrayList<Integer> rList, String fileName) {
+    public JSONObject generate(String fileName, ArrayList<Integer> rList) {
         // All agents within a cluster share a constraint
         JSONObject jExperiment = new JSONObject();
         double[] bgLoads = new double[timeHorizon];
         try {
             jExperiment.put("horizon", timeHorizon);
             jExperiment.put("priceSchema", priceSchema);
-
+            jExperiment.put("granularity", ruleGenerator.getGran());
+            
             JSONObject jAgents = new JSONObject();
 
             int aCount = 0;
@@ -158,19 +151,8 @@ public class Generator {
             jExperiment.put("agents", jAgents);
 
             ruleCSV = ruleGenerator.getRuleCSV();
-            try {
-                FileWriter fileOut = new FileWriter(fileName, false); //trick to erase contents of file before starting
-                fileOut.write("");
-                fileOut.flush();
-                fileOut.close();
-                fileOut = new FileWriter(fileName, true);
-                for(String r : ruleCSV) {
-                    fileOut.write(r + "\n");
-                }
-                fileOut.flush();
-                fileOut.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+            if (!fileName.equals("false")) {
+                Utilities.writeFile(fileName, ruleCSV);
             }
 
         } catch (Exception e) {
@@ -187,48 +169,36 @@ public class Generator {
         JSONObject jExperiment = new JSONObject();
         RuleParser parse = new RuleParser();
         JSONArray house = parse.readFile(fileName);
-        JSONObject jRules = house.getJSONObject(0);
-        JSONObject jBgLoads = house.getJSONObject(1);
+        Topology topo = new Topology(house.getInt(2), house.getInt(3));
+        JSONObject jRules   = house.getJSONObject(4);
+        JSONObject jBgLoads = house.getJSONObject(5);
+        JSONObject jHType   = house.getJSONObject(6);
         try {
-            jExperiment.put("horizon", timeHorizon);
+            jExperiment.put("horizon", house.getInt(0));
+            jExperiment.put("granularity", house.getInt(1));
             jExperiment.put("priceSchema", priceSchema);
-
             JSONObject jAgents = new JSONObject();
+            int hType;
 
-            int aCount = 0;
-            int hType = 0;
-            int[] numEachType = numEachHouse();
-            for (String agtName : topology.getAgents()) {
+            for (String agtName : topo.getAgents()) {
 
-                //shifts to the next type of house (small, medium, or large)
-                while(aCount == numEachType[hType] && hType < 3) {
-                    hType++;
-                    aCount = 0;
-                }
+                hType = jHType.getInt(agtName);
 
                 JSONObject jAgent = new JSONObject();
 
                 // Create array of neighbors
                 JSONArray jNeighbors = new JSONArray();
 
-                for (String neigName : topology.getNeighbors(agtName)) {
+                for (String neigName : topo.getNeighbors(agtName)) {
                     if (neigName.compareTo(agtName) != 0)
                         jNeighbors.put(neigName);
                 }
 
                 jAgent.put("houseType", hType);
                 jAgent.put("neighbors", jNeighbors);
-                double[] bgLoads = (double[])jBgLoads.get(agtName);
-                /*for(double d : bgLoads) {
-                    System.out.print(d + " ");
-                }*/
-                //System.out.println();
                 jAgent.put("backgroundLoad", jBgLoads.get(agtName));
                 jAgent.put("rules", jRules.getJSONArray(agtName));
-                //System.out.println("agtName: " + agtName);
-                //System.out.println(jRules.getJSONArray(agtName).toString(2));
                 jAgents.put(agtName, jAgent);
-                aCount++;
             }
             jExperiment.put("agents", jAgents);
 
