@@ -78,11 +78,12 @@ public class Generator {
 
                 // Create array of neighbors
                 JSONArray jNeighbors = new JSONArray();
-
+                /*
                 for (String neigName : topology.getNeighbors(agtName)) {
                     if (neigName.compareTo(agtName) != 0)
                         jNeighbors.put(neigName);
                 }
+                */
 
                 jAgent.put("houseType", hType);
                 ruleGenerator.addHouseType(hType);
@@ -170,6 +171,51 @@ public class Generator {
         RuleParser parse = new RuleParser();
         JSONArray house = parse.readFile(fileName);
         Topology topo = new Topology(house.getInt(2), house.getInt(3));
+        JSONObject jRules   = house.getJSONObject(4);
+        JSONObject jBgLoads = house.getJSONObject(5);
+        JSONObject jHType   = house.getJSONObject(6);
+        try {
+            jExperiment.put("horizon", house.getInt(0));
+            jExperiment.put("granularity", house.getInt(1));
+            jExperiment.put("priceSchema", priceSchema);
+            JSONObject jAgents = new JSONObject();
+            int hType;
+
+            for (String agtName : topo.getAgents()) {
+
+                hType = jHType.getInt(agtName);
+
+                JSONObject jAgent = new JSONObject();
+
+                // Create array of neighbors
+                JSONArray jNeighbors = new JSONArray();
+
+                for (String neigName : topo.getNeighbors(agtName)) {
+                    if (neigName.compareTo(agtName) != 0)
+                        jNeighbors.put(neigName);
+                }
+
+                jAgent.put("houseType", hType);
+                jAgent.put("neighbors", jNeighbors);
+                jAgent.put("backgroundLoad", jBgLoads.get(agtName));
+                jAgent.put("rules", jRules.getJSONArray(agtName));
+                jAgents.put(agtName, jAgent);
+            }
+            jExperiment.put("agents", jAgents);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return jExperiment;
+    }
+
+    public JSONObject regenerate(String fileName, int clusters) {
+        // All agents within a cluster share a constraint
+        JSONObject jExperiment = new JSONObject();
+        RuleParser parse = new RuleParser();
+        JSONArray house = parse.readFile(fileName);
+        Topology topo = new Topology(house.getInt(2), clusters);
         JSONObject jRules   = house.getJSONObject(4);
         JSONObject jBgLoads = house.getJSONObject(5);
         JSONObject jHType   = house.getJSONObject(6);

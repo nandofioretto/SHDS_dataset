@@ -86,9 +86,11 @@ public class SHDS {
             break;
             case "-regenerate":
                 String temp = args[1].replaceAll("c", "").replaceAll("a", "");
-                String[] CSVFile = temp.split("_");
-                //System.out.println("AGENTS: "+topo.getNumAgents());
-                regenDataset(args[1].replaceAll("_CSV.txt", ""), settings.getInt("time_span"), settings.getInt("time_granularity"));
+                if(args.length > 1) {
+                    regenDataset(temp.replaceAll("_CSV.txt", ""), settings.getInt("time_span"), settings.getInt("time_granularity"), Integer.parseInt(args[1]));
+                } else {
+                    regenDataset(temp.replaceAll("_CSV.txt", ""), settings.getInt("time_span"), settings.getInt("time_granularity"));
+                }
             break;
             case "-genAgents":
                 topo = new Topology(Integer.parseInt(args[4]), Integer.parseInt(args[4]));
@@ -137,22 +139,14 @@ public class SHDS {
                             "generates a custom dataset with extra arguments as settings.\n" +
                     "-genAgents <rule_id> <time_span> <time_granularity> <num_agents> <house_size>\n\t" +
                             "generate a dataset of a single active rule for <num_agents> agents of given house size.\n" +
-                    "-regenerate <fileName>\n\t" +
-                            "regenerates a dataset from a CSV file (provided from generation)\n" +
+                    "-regenerate <fileName> <OPTIONAL:coalitions>\n\t" +
+                            "regenerates a dataset from a CSV file (provided from generation). Optionally give a number of coalitions to divide the houses into.\n" +
                     "-test <rule_id> <time_span> <time_granularity> <OPTIONAL:num_files>\n\t" +
                             "generates a dataset with 1 house and 1 rule (with the given ruleID)\n" +
                     "-tests <time_span> <time_granularity> <OPTIONAL:num_files>\n\t" +
                             "generates a dataset with 1 house FOR EACH rule\n");
             break;
         }
-        
-        /*
-          Generating the file
-          void generateSHDSInstances(String fileName, int nDevices, Topology topo){ ... }
-
-          Takes in: 1) file name, 2) number of devices, and 3) topology of the problem
-         */
-
     }
     
     
@@ -168,9 +162,9 @@ public class SHDS {
          */
 
         String[] city = {
-                "DM", //Des Moines
-                "BO", //Boston
-                "SF"  //San Francisco
+                "dm", //Des Moines
+                "bo", //Boston
+                "sf"  //San Francisco
         };
 
         double[] gridLength = { //relates (mostly) to number of agents
@@ -200,28 +194,38 @@ public class SHDS {
                 1024
         };
 
-        final int MIN_DEV = 2; final int MAX_DEV = 20; //minimum and maximum amount of devices per house to generate files for
+        final int MIN_DEV = 2; final int MAX_DEV = 6; //minimum and maximum amount of devices per house to generate files for
         final int NUM_GRID_SIZES = 5; //number of different grid sizes to generate from the list above, some of the larger problems might be to big for some computers to handle
         for(int i = 0; i < city.length; i++) { // for each city
             for(int j = 0; j < NUM_GRID_SIZES; j++) { //for each grid size
 
                 Topology topo = generateTopology(i, gridLength[j], 1);
-                for (int k = 2; topo != null && k < clusterDiv.length; k++) {
+                for(int d = MIN_DEV; d <= MAX_DEV; d++) {
+                    String fileName = "datasets/" + city[i]
+                            + "_" + topo.getNumAgents()
+                            + "_" + topo.getNumClusters()
+                            + "_" + d;
+                    generateSHDSInstances(fileName, d, topo, time_span, time_granularity);
 
-                    topo = generateTopology(i, gridLength[j], clusterDiv[k]);
-                    if (topo == null) continue; // if num_agents < agents_per_cluster then stop
-
-                    for(int d = MIN_DEV; d <= MAX_DEV; d++) {
-                        String fileName = "datasets/instance_" + city[i]
-                                + "_a" + topo.getNumAgents()
-                                + "_c" + topo.getNumClusters()
-                                + "_d" + d;
+                    if(d == MAX_DEV) {
+                        Topology temp = topo;
+                        for (int k = 2; temp != null && k < clusterDiv.length; k++) {
+                            temp = generateTopology(i, gridLength[j], clusterDiv[k]);
+                            if (temp == null) continue; // if num_agents < agents_per_cluster then stop
+                            else topo = temp;
+                        }
+                        fileName = "datasets/" + city[i]
+                                + "_" + topo.getNumAgents()
+                                + "_" + topo.getNumClusters()
+                                + "_" + d;
                         generateSHDSInstances(fileName, d, topo, time_span, time_granularity);
                     }
                 }
             }
         }
     }
+
+
 
     private static void generateExtras(int time_span, int time_granularity) {
 
@@ -244,39 +248,11 @@ public class SHDS {
                 2000,
         };
 
-        double[] clusterDiv = { //multiply grid length by this and plug into radius in order for this to be number of clusters
-                1,
-                4,
-                10,
-                20,
-                100
-        };
-
-        
-        int[] numDev = {
-                2,
-                5,
-                10,
-                15,
-                20
-        };
-        
-        for(int i = 0; i < city.length; i++) { // for each city
-            for(int j = 0; j < gridLength.length; j++) { //for each grid size
-            
-                Topology topo = generateTopology(i, gridLength[j], 1);
-                for (int k = 2; topo != null && k < clusterDiv.length; k++) {
-                
-                    topo = generateTopology(i, gridLength[j], clusterDiv[k]);
-                    if (topo == null) continue; // if num_agents < agents_per_cluster then stop
-
-                    for(int d = 0; d < numDev.length; d++) {
-                        String fileName = "datasets/instance_" + city[i]
-                                + "_a" + topo.getNumAgents()
-                                + "_c" + topo.getNumClusters()
-                                + "_d" + numDev[d];
-                        generateSHDSInstances(fileName, numDev[d], topo, time_span, time_granularity);
-                    }
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < gridLength.length; j++){
+                Topology topology = generateTopology(i, gridLength[j], 1);
+                for(int d = 2; d <=20; d++) {
+                    generateSHDSInstances("datasets/" + city[i] + "_" + topology.getNumAgents() + "_" + d, d, topology, time_span, time_granularity);
                 }
             }
         }
@@ -363,6 +339,21 @@ public class SHDS {
         try {
             FileWriter fileOut = new FileWriter(fileName.replaceAll(".txt", "")+".json");
             fileOut.write(gen.regenerate(fileName).toString(2));
+            fileOut.flush();
+            fileOut.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void regenDataset(String fileName, int span, int granularity, int clusters) {
+        JSONArray devices = convertDevices(readDevices(), granularity);
+        RuleGenerator ruleGen = new RuleGenerator(span, granularity, devices);
+        Generator gen = new Generator(new Topology(1,1), ruleGen, 0, new int[]{1, 1, 1});
+
+        try {
+            FileWriter fileOut = new FileWriter(fileName.replaceAll(".txt", "")+".json");
+            fileOut.write(gen.regenerate(fileName, clusters).toString(2));
             fileOut.flush();
             fileOut.close();
         } catch (IOException e) {

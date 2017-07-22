@@ -99,7 +99,7 @@ public class RuleGenerator {
         while(rId <= nDevices) {
             if(empty) {
                 list = new ArrayList<>(8);
-                for(int i = 0; i <= 8; i++) {
+                for(int i = 1; i <= 8; i++) {
                     list.add(i);
                 }
                 empty = false;
@@ -140,7 +140,7 @@ public class RuleGenerator {
         while(rId <= nDevices) {
             if(empty) {
                 list = new ArrayList<>(8);
-                for(int i = 0; i <= 8; i++) {
+                for(int i = 1; i <= 8; i++) {
                     list.add(i);
                 }
                 empty = false;
@@ -217,21 +217,21 @@ public class RuleGenerator {
         switch(index) {
             // Washer
             case 1:
-                relation = "geq";
+                relation = "eq";
                 state = Utilities.genRand(new int[]{60}); // goal state
                 predicate = Utilities.genRand(new String[]{"before", "after", "at"});
                 break;
 
             // Dryer
             case 2:
-                relation = "geq";
+                relation = "eq";
                 state = Utilities.genRand(new int[]{60}); // goal state
                 predicate = Utilities.genRand(new String[]{"before", "after", "at"});
                 break;
 
             // Dishwasher
             case 3:
-                relation = "geq";
+                relation = "eq";
                 state = Utilities.genRand(new int[]{60}); // goal state
                 predicate = Utilities.genRand(new String[]{"before", "after", "at"});
                 break;
@@ -244,23 +244,23 @@ public class RuleGenerator {
                 break;
 
             // Water Heater
-            case 5: // TODO: find out if we need active rules for the water heater && fix the rules so they meet bacteria safety guidelines
-                state = Utilities.genRand(45, 60);
-                relation = Utilities.genRand(new String[]{"geq", "gt"});
-                predicate = Utilities.genRand(new String[]{"before", "after", "at"});
+            case 5:
+                state = Utilities.genRand(50, 65);
+                relation = Utilities.genRand(new String[]{"lt", "leq", "geq", "gt"});
+                predicate = Utilities.genRand(new String[]{"before", "after"});
                 break;
 
             // Electric Vehicle
             case 6:
-                state = Utilities.genRand(50, 85);
-                relation = Utilities.genRand(new String[]{"geq", "gt"});
-                predicate = Utilities.genRand(new String[]{"before", "after", "at"});
+                state = Utilities.genRand(50, 80);
+                relation = Utilities.genRand(new String[]{"lt", "leq", "geq", "gt"});
+                predicate = Utilities.genRand(new String[]{"before", "after"});
                 break;
 
             // Heater
             case 7:
-                state = Utilities.genRand(20, 25);
-                relation = Utilities.genRand(new String[]{"geq", "gt"});
+                state = Utilities.genRand(19, 24);
+                relation = Utilities.genRand(new String[]{"lt", "leq", "geq", "gt"});
                 predicate = randPredicate();
                 break;
 
@@ -268,7 +268,7 @@ public class RuleGenerator {
             case 8:
                 state = Utilities.genRand(50, 80);
                 relation = Utilities.genRand(new String[]{"geq", "gt"});
-                predicate = Utilities.genRand(new String[]{"before", "after", "at"});
+                predicate = Utilities.genRand(new String[]{"before", "after"});
                 break;
 
             // If device index is out of bounds
@@ -309,16 +309,16 @@ public class RuleGenerator {
                 rules.add("0 " + device + " " + property + " leq " + state);
                 break;
             case 5:
-                rules.add("0 " + device + " " + property + " geq 30");
-                rules.add("0 " + device + " " + property + " leq 70");
+                rules.add("0 " + device + " " + property + " geq 37");
+                rules.add("0 " + device + " " + property + " leq 78");
                 break;
             case 6:
                 rules.add("0 " + device + " " + property + " geq 0");
                 rules.add("0 " + device + " " + property + " leq 100");
                 break;
             case 7:
-                rules.add("0 " + device + " " + property + " geq 0");
-                rules.add("0 " + device + " " + property + " leq 33");
+                rules.add("0 " + device + " " + property + " geq 8");
+                rules.add("0 " + device + " " + property + " leq 35");
                 break;
             case 8:
                 rules.add("0 " + device + " " + property + " geq 0");
@@ -333,7 +333,7 @@ public class RuleGenerator {
 
     /**Returns a random time predicate with spacing around it.*/
     private String randPredicate() {
-        return Utilities.genRand(new String[]{"before", "after", "at", "within"});
+        return Utilities.genRand(new String[]{"before", "after"});//, "at", "within"});
     }
 
     /**Generates active rules given some parameters*/
@@ -460,10 +460,10 @@ public class RuleGenerator {
         String loc;
         switch(index) {
             case 1:
-                loc = "LG_WM2016CW";
+                loc = "GE_WSM2420D3WW_wash";
                 break;
             case 2:
-                loc = "GE_WSM2420D3WW";
+                loc = "GE_WSM2420D3WW_dry";
                 break;
             case 3:
                 loc = "Kenmore_665.13242K900";

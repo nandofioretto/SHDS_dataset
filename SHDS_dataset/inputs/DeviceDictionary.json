@@ -7,15 +7,11 @@
       "actions": {
         "off": {
           "power_consumed": 0.0,
-          "effects": [{"property": "temperature_heat", "delta": -4.67}]
-        },
-        "fan": {
-          "power_consumed": 0.48,
-          "effects": [{"property": "temperature_heat", "delta": -0.44}]
+          "effects": [{"property": "temperature_heat", "delta": -0.59}]
         },
         "heat": {
           "power_consumed": 1.5,
-          "effects": [{"property": "temperature_heat", "delta": 8.2}]
+          "effects": [{"property": "temperature_heat", "delta": 10.1}]
         }
       }
     },
@@ -27,31 +23,27 @@
       "actions": {
         "off": {
           "power_consumed": 0.0,
-          "effects": [{"property": "temperature_cool", "delta": 3.55}]
-        },
-        "fan": {
-          "power_consumed": 0.72,
-          "effects": [{"property": "temperature_cool", "delta": 0.66}]
+          "effects": [{"property": "temperature_cool", "delta": 0.59}]
         },
         "cool": {
           "power_consumed": 2.22,
-          "effects": [{"property": "temperature_cool", "delta": -10.2}]
+          "effects": [{"property": "temperature_cool", "delta": -28.96}]
         }
       }
     },
 
-    "Tempea_36" : {
+    "Rheem_XE40M12ST45U1" : {
       "type": "actuator",
       "subtype": "water_heater",
       "location": "water_tank",
       "actions": {
         "off": {
           "power_consumed": 0.0,
-          "effects": [{"property": "water_temp", "delta": -2.22}]
+          "effects": [{"property": "water_temp", "delta": -7.1}]
         },
         "heat": {
-          "power_consumed": 3.6,
-          "effects": [{"property": "water_temp", "delta": 9.9}]
+          "power_consumed": 5.52,
+          "effects": [{"property": "water_temp", "delta": 12.88}]
         }
       }
     },
@@ -70,8 +62,8 @@
           "effects": [{"property": "cleanliness", "delta": 40.56},  {"property": "charge", "delta": -12.6}]
         },
         "charge": {
-          "power_consumed": 0.24,
-          "effects": [{"property": "charge", "delta": 19.8}]
+          "power_consumed": 0.18,
+          "effects": [{"property": "charge", "delta": 41.64}]
         }
       }
     },
@@ -85,9 +77,9 @@
           "power_consumed": 0.0,
           "effects": [{"property": "charge", "delta": 0.0}]
         },
-        "charge": {
-          "power_consumed": 17.28,
-          "effects": [{"property": "charge", "delta": 19.98}]
+        "charge_48a": {
+          "power_consumed": 11.52,
+          "effects": [{"property": "charge", "delta": 13.56}]
         }
       }
     },
@@ -95,14 +87,14 @@
     "GE_WSM2420D3WW_wash" : {
       "type": "actuator",
       "subtype": "cloths_washer",
-      "location": "LG_WM2016CW",
+      "location": "GE_WSM2420D3WW_wash",
       "actions": {
         "off": {
           "power_consumed": 0.0,
           "effects": [{"property": "laundry_wash", "delta": 0.0}]
         },
-        "reg_cycle": {
-          "power_consumed": 1.38,
+        "regular": {
+          "power_consumed": 0.46,
           "effects": [{"property": "laundry_wash", "delta": 60.0}]
         }
       }
@@ -111,13 +103,13 @@
     "GE_WSM2420D3WW_dry" : {
       "type": "actuator",
       "subtype": "cloths_dryer",
-      "location": "GE_WSM2420D3WW",
+      "location": "GE_WSM2420D3WW_dry",
       "actions": {
         "off": {
           "power_consumed": 0.0,
           "effects": [{"property": "laundry_dry", "delta": 0.0}]
         },
-        "reg_cycle": {
+        "regular": {
           "power_consumed": 1.62,
           "effects": [{"property": "laundry_dry", "delta": 60.0}]
         }
@@ -166,8 +158,8 @@
           "power_consumed": 0.0,
           "effects": [{"property": "dish_wash", "delta": 0.0}]
         },
-        "reg_cycle": {
-          "power_consumed": 1.26,
+        "wash": {
+          "power_consumed": 0.42,
           "effects": [{"property": "dish_wash", "delta": 60.0}]
         }
       }
@@ -192,7 +184,7 @@
     "water_heat_sensor": {
       "type": "sensor",
       "subtype": "water_heater",
-      "current_state": 22,
+      "current_state": 50,
       "location": "water_tank",
       "sensing_properties": ["water_temp"]
     },
@@ -208,7 +200,7 @@
     "iRobot_651_battery": {
       "type": "sensor",
       "subtype": "battery",
-      "current_state": 10,
+      "current_state": 70,
       "location": "Roomba_880",
       "sensing_properties": ["charge"]
     },
@@ -221,23 +213,23 @@
       "sensing_properties": ["charge"]
     },
 
-    "LG_WM2016CW_sensor": {
+    "GE_WSM2420D3WW_wash_sensor": {
       "type": "sensor",
       "current_state": 0,
       "subtype": "cloths_washer",
-      "location": "LG_WM2016CW",
+      "location": "GE_WSM2420D3WW_wash",
       "sensing_properties": ["laundry_wash"]
     },
 
-    "GE_WSM2420D3WW_sensor": {
+    "GE_WSM2420D3WW_dry_sensor": {
       "type": "sensor",
       "current_state": 0,
       "subtype": "cloths_dryer",
-      "location": "GE_WSM2420D3WW",
+      "location": "GE_WSM2420D3WW_dry",
       "sensing_properties": ["laundry_dry"]
     },
 
-    "Kenmore_sensor": {
+    "Kenmore_790_sensor": {
       "type": "sensor",
       "subtype": "oven",
       "current_state": 0,
@@ -253,6 +245,7 @@
       "sensing_properties": ["dish_wash"]
     }
   },
+
   {
     "Dyson_AM09" : {
       "type": "actuator",
@@ -261,15 +254,11 @@
       "actions": {
         "off": {
           "power_consumed": 0.0,
-          "effects": [{"property": "temperature_heat", "delta": -4.67}]
-        },
-        "fan": {
-          "power_consumed": 0.48,
-          "effects": [{"property": "temperature_heat", "delta": -0.44}]
+          "effects": [{"property": "temperature_heat", "delta": -0.97}]
         },
         "heat": {
           "power_consumed": 1.5,
-          "effects": [{"property": "temperature_heat", "delta": 8.2}]
+          "effects": [{"property": "temperature_heat", "delta": 5.05}]
         }
       }
     },
@@ -281,31 +270,27 @@
       "actions": {
         "off": {
           "power_consumed": 0.0,
-          "effects": [{"property": "temperature_cool", "delta": 3.55}]
-        },
-        "fan": {
-          "power_consumed": 0.72,
-          "effects": [{"property": "temperature_cool", "delta": 0.66}]
+          "effects": [{"property": "temperature_cool", "delta": 0.97}]
         },
         "cool": {
           "power_consumed": 2.22,
-          "effects": [{"property": "temperature_cool", "delta": -10.2}]
+          "effects": [{"property": "temperature_cool", "delta": -14.48}]
         }
       }
     },
 
-    "Tempea_36" : {
+    "Rheem_XE40M12ST45U1" : {
       "type": "actuator",
       "subtype": "water_heater",
       "location": "water_tank",
       "actions": {
         "off": {
           "power_consumed": 0.0,
-          "effects": [{"property": "water_temp", "delta": -2.22}]
+          "effects": [{"property": "water_temp", "delta": -7.1}]
         },
         "heat": {
           "power_consumed": 3.6,
-          "effects": [{"property": "water_temp", "delta": 8.94}]
+          "effects": [{"property": "water_temp", "delta": 12.88}]
         }
       }
     },
@@ -324,8 +309,8 @@
           "effects": [{"property": "cleanliness", "delta": 20.28},  {"property": "charge", "delta": -12.6}]
         },
         "charge": {
-          "power_consumed": 0.24,
-          "effects": [{"property": "charge", "delta": 19.8}]
+          "power_consumed": 0.18,
+          "effects": [{"property": "charge", "delta": 41.64}]
         }
       }
     },
@@ -339,9 +324,9 @@
           "power_consumed": 0.0,
           "effects": [{"property": "charge", "delta": 0.0}]
         },
-        "charge": {
-          "power_consumed": 17.28,
-          "effects": [{"property": "charge", "delta": 19.98}]
+        "charge_48a": {
+          "power_consumed": 11.52,
+          "effects": [{"property": "charge", "delta": 13.56}]
         }
       }
     },
@@ -349,14 +334,14 @@
     "GE_WSM2420D3WW_wash" : {
       "type": "actuator",
       "subtype": "cloths_washer",
-      "location": "LG_WM2016CW",
+      "location": "GE_WSM2420D3WW_wash",
       "actions": {
         "off": {
           "power_consumed": 0.0,
           "effects": [{"property": "laundry_wash", "delta": 0.0}]
         },
-        "reg_cycle": {
-          "power_consumed": 1.38,
+        "regular": {
+          "power_consumed": 0.46,
           "effects": [{"property": "laundry_wash", "delta": 60.0}]
         }
       }
@@ -365,13 +350,13 @@
     "GE_WSM2420D3WW_dry" : {
       "type": "actuator",
       "subtype": "cloths_dryer",
-      "location": "GE_WSM2420D3WW",
+      "location": "GE_WSM2420D3WW_dry",
       "actions": {
         "off": {
           "power_consumed": 0.0,
           "effects": [{"property": "laundry_dry", "delta": 0.0}]
         },
-        "reg_cycle": {
+        "regular": {
           "power_consumed": 1.62,
           "effects": [{"property": "laundry_dry", "delta": 60.0}]
         }
@@ -420,8 +405,8 @@
           "power_consumed": 0.0,
           "effects": [{"property": "dish_wash", "delta": 0.0}]
         },
-        "reg_cycle": {
-          "power_consumed": 1.26,
+        "wash": {
+          "power_consumed": 0.42,
           "effects": [{"property": "dish_wash", "delta": 60.0}]
         }
       }
@@ -446,7 +431,7 @@
     "water_heat_sensor": {
       "type": "sensor",
       "subtype": "water_heater",
-      "current_state": 22,
+      "current_state": 50,
       "location": "water_tank",
       "sensing_properties": ["water_temp"]
     },
@@ -462,7 +447,7 @@
     "iRobot_651_battery": {
       "type": "sensor",
       "subtype": "battery",
-      "current_state": 10,
+      "current_state": 70,
       "location": "Roomba_880",
       "sensing_properties": ["charge"]
     },
@@ -475,23 +460,23 @@
       "sensing_properties": ["charge"]
     },
 
-    "LG_WM2016CW_sensor": {
+    "GE_WSM2420D3WW_wash_sensor": {
       "type": "sensor",
       "current_state": 0,
       "subtype": "cloths_washer",
-      "location": "LG_WM2016CW",
+      "location": "GE_WSM2420D3WW_wash",
       "sensing_properties": ["laundry_wash"]
     },
 
-    "GE_WSM2420D3WW_sensor": {
+    "GE_WSM2420D3WW_dry_sensor": {
       "type": "sensor",
       "current_state": 0,
       "subtype": "cloths_dryer",
-      "location": "GE_WSM2420D3WW",
+      "location": "GE_WSM2420D3WW_dry",
       "sensing_properties": ["laundry_dry"]
     },
 
-    "Kenmore_sensor": {
+    "Kenmore_790_sensor": {
       "type": "sensor",
       "subtype": "oven",
       "current_state": 0,
@@ -515,15 +500,11 @@
       "actions": {
         "off": {
           "power_consumed": 0.0,
-          "effects": [{"property": "temperature_heat", "delta": -4.67}]
-        },
-        "fan": {
-          "power_consumed": 0.48,
-          "effects": [{"property": "temperature_heat", "delta": -0.44}]
+          "effects": [{"property": "temperature_heat", "delta": -1.64}]
         },
         "heat": {
           "power_consumed": 1.5,
-          "effects": [{"property": "temperature_heat", "delta": 8.2}]
+          "effects": [{"property": "temperature_heat", "delta": 2.53}]
         }
       }
     },
@@ -543,23 +524,23 @@
         },
         "cool": {
           "power_consumed": 2.22,
-          "effects": [{"property": "temperature_cool", "delta": -10.2}]
+          "effects": [{"property": "temperature_cool", "delta": -7.24}]
         }
       }
     },
 
-    "Tempea_36" : {
+    "Rheem_XE40M12ST45U1" : {
       "type": "actuator",
       "subtype": "water_heater",
       "location": "water_tank",
       "actions": {
         "off": {
           "power_consumed": 0.0,
-          "effects": [{"property": "water_temp", "delta": -2.22}]
+          "effects": [{"property": "water_temp", "delta": -7.1}]
         },
         "heat": {
           "power_consumed": 3.6,
-          "effects": [{"property": "water_temp", "delta": 6.83}]
+          "effects": [{"property": "water_temp", "delta": 12.88}]
         }
       }
     },
@@ -578,8 +559,8 @@
           "effects": [{"property": "cleanliness", "delta": 10.08},  {"property": "charge", "delta": -12.6}]
         },
         "charge": {
-          "power_consumed": 0.24,
-          "effects": [{"property": "charge", "delta": 19.8}]
+          "power_consumed": 0.18,
+          "effects": [{"property": "charge", "delta": 41.64}]
         }
       }
     },
@@ -593,9 +574,9 @@
           "power_consumed": 0.0,
           "effects": [{"property": "charge", "delta": 0.0}]
         },
-        "charge": {
-          "power_consumed": 17.28,
-          "effects": [{"property": "charge", "delta": 19.98}]
+        "charge_72a": {
+          "power_consumed": 17,
+          "effects": [{"property": "charge", "delta": 20}]
         }
       }
     },
@@ -603,14 +584,14 @@
     "GE_WSM2420D3WW_wash" : {
       "type": "actuator",
       "subtype": "cloths_washer",
-      "location": "LG_WM2016CW",
+      "location": "GE_WSM2420D3WW_wash",
       "actions": {
         "off": {
           "power_consumed": 0.0,
           "effects": [{"property": "laundry_wash", "delta": 0.0}]
         },
-        "reg_cycle": {
-          "power_consumed": 1.38,
+        "regular": {
+          "power_consumed": 0.46,
           "effects": [{"property": "laundry_wash", "delta": 60.0}]
         }
       }
@@ -619,13 +600,13 @@
     "GE_WSM2420D3WW_dry" : {
       "type": "actuator",
       "subtype": "cloths_dryer",
-      "location": "GE_WSM2420D3WW",
+      "location": "GE_WSM2420D3WW_dry",
       "actions": {
         "off": {
           "power_consumed": 0.0,
           "effects": [{"property": "laundry_dry", "delta": 0.0}]
         },
-        "reg_cycle": {
+        "regular": {
           "power_consumed": 1.62,
           "effects": [{"property": "laundry_dry", "delta": 60.0}]
         }
@@ -674,8 +655,8 @@
           "power_consumed": 0.0,
           "effects": [{"property": "dish_wash", "delta": 0.0}]
         },
-        "reg_cycle": {
-          "power_consumed": 1.26,
+        "wash": {
+          "power_consumed": 0.42,
           "effects": [{"property": "dish_wash", "delta": 60.0}]
         }
       }
@@ -700,7 +681,7 @@
     "water_heat_sensor": {
       "type": "sensor",
       "subtype": "water_heater",
-      "current_state": 22,
+      "current_state": 50,
       "location": "water_tank",
       "sensing_properties": ["water_temp"]
     },
@@ -716,7 +697,7 @@
     "iRobot_651_battery": {
       "type": "sensor",
       "subtype": "battery",
-      "current_state": 10,
+      "current_state": 70,
       "location": "Roomba_880",
       "sensing_properties": ["charge"]
     },
@@ -729,23 +710,23 @@
       "sensing_properties": ["charge"]
     },
 
-    "LG_WM2016CW_sensor": {
+    "GE_WSM2420D3WW_wash_sensor": {
       "type": "sensor",
       "current_state": 0,
       "subtype": "cloths_washer",
-      "location": "LG_WM2016CW",
+      "location": "GE_WSM2420D3WW_wash",
       "sensing_properties": ["laundry_wash"]
     },
 
-    "GE_WSM2420D3WW_sensor": {
+    "GE_WSM2420D3WW_dry_sensor": {
       "type": "sensor",
       "current_state": 0,
       "subtype": "cloths_dryer",
-      "location": "GE_WSM2420D3WW",
+      "location": "GE_WSM2420D3WW_dry",
       "sensing_properties": ["laundry_dry"]
     },
 
-    "Kenmore_sensor": {
+    "Kenmore_790_sensor": {
       "type": "sensor",
       "subtype": "oven",
       "current_state": 0,
