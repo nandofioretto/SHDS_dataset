@@ -1,0 +1,78 @@
+{
+  "horizon": 12,
+  "granularity": 60,
+  "priceSchema": [
+    0.198,
+    0.198,
+    0.198,
+    0.198,
+    0.225,
+    0.225,
+    0.249,
+    0.849,
+    0.849,
+    0.225,
+    0.225,
+    0.198
+  ],
+  "agents": {
+    "h1": {
+      "neighbors": [
+        "h2"
+      ],
+      "backgroundLoad": [
+        0.24,
+        0.26,
+        0.17,
+        0.13,
+        0.13,
+        0.27,
+        0.1,
+        0.04,
+        0.02,
+        0.14,
+        0.2,
+        0.28
+      ],
+      "houseType": 0,
+      "rules": [
+        "1 water_tank water_temp geq 54 before 11",
+        "0 water_tank water_temp geq 30",
+        "0 water_tank water_temp leq 70",
+        "1 room cleanliness gt 69 after 7",
+        "0 room cleanliness geq 0",
+        "0 room cleanliness leq 100",
+        "0 Roomba_880 charge geq 0",
+        "0 Roomba_880 charge leq 100"
+      ]
+    },
+    "h2": {
+      "neighbors": [
+        "h1"
+      ],
+      "backgroundLoad": [
+        0.12,
+        0.26,
+        0.18,
+        0.16,
+        0.06,
+        0.11,
+        0.13,
+        0.05,
+        0.02,
+        0.08,
+        0.18,
+        0.15
+      ],
+      "houseType": 2,
+      "rules": [
+        "1 Kenmore_665.13242K900 dish_wash geq 60 before 4",
+        "0 Kenmore_665.13242K900 dish_wash geq 0",
+        "0 Kenmore_665.13242K900 dish_wash leq 60",
+        "1 Tesla_S charge geq 72 at 6",
+        "0 Tesla_S charge geq 0",
+        "0 Tesla_S charge leq 100"
+      ]
+    }
+  }
+}
