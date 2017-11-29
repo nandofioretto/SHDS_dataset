@@ -78,12 +78,11 @@ public class Generator {
 
                 // Create array of neighbors
                 JSONArray jNeighbors = new JSONArray();
-                /*
                 for (String neigName : topology.getNeighbors(agtName)) {
                     if (neigName.compareTo(agtName) != 0)
                         jNeighbors.put(neigName);
                 }
-                */
+
 
                 jAgent.put("houseType", hType);
                 ruleGenerator.addHouseType(hType);
