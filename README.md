@@ -180,10 +180,10 @@ We have included a couple folders full of datasets that you can use if you do no
 They have been compressed to save space on the repo.
 There are two folders:
 1. datasets/
-  Contains the exact datasets used to generate the final table in the paper in json format, ready to use. They were split up into 3 parts with identical houses but different device rules (because of the limitations of our solver); the results were added together to create the table in the paper.
-2. extra_datasets/
-  Contains some extra datasets in CSV format. These datasets can be converted to json by using the '-regenerate <filename>' arguments on the program.
-  
+  Contains the exact datasets used to generate the final table in the paper in json format, ready to use.
+  Also Contains a copy of DeviceDictionary.json --- the list of devices used to generate the dataset.
+  DeviceDictionary.json is structured as a JSON Array with three JSON Objects (small, medium, and large house types in that order --- these are outlined in the paper). The only difference between each house JSON Object is the change over time for each action of each device.
+  Additional datasets can be generated through the java code provided using the command - _extra_ as described in section _2: Running Modes_.
 	**NOTE:** All of these datasets were generated using the settings outlined in the Settings.json file. DO NOT modify these settings if you wish to regenerate these files.
       These rules are generated with the following parameters: 60 minute granularity, 12 hour timespan
 
