@@ -195,10 +195,10 @@ If you wish to alter these devices, add new devices / sensor properties, you may
 - Settings.json	These are the settings that the generator uses when generating the datasets.
 
 
-## References:
-- William Kluegel, Muhammad Aamir Iqbal, Ferdinando Fioretto, William Yeoh, Enrico Pontelli: 
-[A Realistic Dataset for the Smart Home Device Scheduling Problem for DCOPs](https://www.cs.nmsu.edu/~wyeoh/OPTMAS2017/). 
-In Proceedings of the International Workshop on Optimisation in Multi-Agent Systems (OPTMAS), 2017.	
+## References
+- Ferdinando Fioretto, William Yeoh, Enrico Pontelli. "A Multiagent System Approach to Scheduling Devices in Smart Homes". In Proceedings of the International Conference on Autonomous Agents and Multiagent Systems (AAMAS), 2017. 
+
+- William Kluegel, Muhammad Aamir Iqbal, Ferdinando Fioretto, William Yeoh, Enrico Pontelli: "A Realistic Dataset for the Smart Home Device Scheduling Problem for DCOPs". In Proceedings of the International Workshop on Optimisation in Multi-Agent Systems (OPTMAS), 2017.	
 
 
 ## Citing
@@ -211,6 +211,11 @@ In Proceedings of the International Workshop on Optimisation in Multi-Agent Syst
 }
 ```
 
+## Sponsors
+- NSF grant 1550662 [CAREER: Decentralized Constraint-Based Optimization for Multi-Agent Planning and Coordination](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1550662)
+
+
 ## Contacts
 - Ferdinando Fioretto: fioretto@umich.edu
 - William Kluegel: wkluegel@cs.nmsu.edu
+- William Yeoh: wyeoh@wustl.edu
