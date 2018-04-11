@@ -129,6 +129,38 @@ public class SHDS {
                     generateSHDSTest(fileName, Integer.parseInt(args[1]), topo, Integer.parseInt(args[2]), Integer.parseInt(args[3]), houseRatio);
                 }
             break;
+			case "-one":
+				// -one <time_span> <time_granularity> <numDevices> <house_size>
+				fileName = "datasets/house";
+				switch(args[4]){
+					case "0":
+					case "small":
+						houseRatio = new int[]{1, 0 ,0};
+					break;
+					case "1":
+					case "medium":
+						houseRatio = new int[]{0, 1 ,0};
+					break;
+					case "2":
+					case "large":
+						houseRatio = new int[]{0, 0 ,1};
+					break;
+					default:
+						houseRatio = new int[]{0, 1, 0};
+				}
+				// generates a single agent with args[1] rules
+				JSONArray devices = convertDevices(readDevices(), Integer.parseInt(args[2]));
+				RuleGenerator ruleGen = new RuleGenerator(Integer.parseInt(args[1]), Integer.parseInt(args[2]), devices);
+				Generator gen = new Generator(new Topology(1, 1), ruleGen, Integer.parseInt(args[3]), houseRatio);
+				try {
+					FileWriter fileOut = new FileWriter(fileName + ".json");
+					fileOut.write(gen.generate("false").toString(2));
+					fileOut.flush();
+					fileOut.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				break;
             case "-help":
                 System.out.println(
                     "-datasets\n\t" +
@@ -144,7 +176,13 @@ public class SHDS {
                     "-test <rule_id> <time_span> <time_granularity> <OPTIONAL:num_files>\n\t" +
                             "generates a dataset with 1 house and 1 rule (with the given ruleID)\n" +
                     "-tests <time_span> <time_granularity> <OPTIONAL:num_files>\n\t" +
-                            "generates a dataset with 1 house FOR EACH rule\n");
+                            "generates a dataset with 1 house FOR EACH rule\n" +
+					"-one <time_span> <time_granularity> <numDevices> <house_size>\n\t" +
+							"generates a dataset with a 1 house and numDevices rules\n\n" +
+					"_______ NOTES __________________________________________\n" +
+					"<time_span> is number of hours the schedule covers\n" +
+					"<time_granularity> is number of minutes in a timestep\n" +
+					"<clusterDiv> is number of coalitions to divide agents into\n");
             break;
         }
     }

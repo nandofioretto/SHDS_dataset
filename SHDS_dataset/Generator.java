@@ -170,7 +170,9 @@ public class Generator {
             jExperiment.put("agents", jAgents);
 
             ruleCSV = ruleGenerator.getRuleCSV();
-            Utilities.writeFile(fileName, ruleCSV);
+            if (!fileName.equals("false")) {
+                Utilities.writeFile(fileName, ruleCSV);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
