@@ -5,7 +5,7 @@
 public final class Parameters {
 
     private static int horizon = 12;
-    private static String deviceDictionaryPath = "inputs/DeviceDictionary.json";
+    private static String deviceDictionaryPath = "inputs/DeviceDictionary2.json";
     private static String settingsPath = "inputs/Settings.json";
     private static double[] priceSchema =
         {0.198, 0.198, 0.198, 0.198, 0.225, 0.225, 0.249, 0.849, 0.849, 0.225, 0.225, 0.198};

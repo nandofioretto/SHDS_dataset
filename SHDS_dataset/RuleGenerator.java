@@ -81,7 +81,7 @@ public class RuleGenerator {
         rule_CSV.add(hID+" "+-2+" "+houseType);
     }
 
-    public JSONArray generateRules(int nDevices, int hType) {
+    public JSONArray generateRules(int nDevices, int hType, String season) {
         this.hType = hType;
         JSONArray jArray = new JSONArray();
         int cycle = 0;
@@ -106,7 +106,7 @@ public class RuleGenerator {
                 cycle++;
             }
 
-            for (String rule : rulePicker(list.remove(rand.nextInt(list.size())), cycle))
+            for (String rule : rulePicker(list.remove(rand.nextInt(list.size())), cycle, season))
                 jArray.put(rule);
             rId++;
             if(list.size() == 0) empty = true;
@@ -117,7 +117,7 @@ public class RuleGenerator {
         return jArray;
     }
 
-    public JSONArray[] generateSeparatedRules(int nDevices, int hType) {
+    public JSONArray[] generateSeparatedRules(int nDevices, int hType, String season) {
         this.hType = hType;
 
         JSONArray[] jArrays = new JSONArray[3];
@@ -156,7 +156,7 @@ public class RuleGenerator {
             } else {
                 index = 0;
             }
-            for (String rule : rulePicker(rPick, cycle))
+            for (String rule : rulePicker(rPick, cycle, season))
                 jArrays[index].put(rule);
             rId++;
             if(list.size() == 0) empty = true;
@@ -167,8 +167,7 @@ public class RuleGenerator {
         return jArrays;
     }
 
-
-    public JSONArray generateRules(int nDevices, int hType, ArrayList<Integer> rList) {
+    public JSONArray generateRules(int nDevices, int hType, ArrayList<Integer> rList, String season) {
         this.hType = hType;
         JSONArray jArray = new JSONArray();
         int cycle = 0;
@@ -194,7 +193,7 @@ public class RuleGenerator {
                 cycle++;
             }
 
-            for (String rule : rulePicker(list.remove(rand.nextInt(list.size())), cycle))
+            for (String rule : rulePicker(list.remove(rand.nextInt(list.size())), cycle, season))
                 jArray.put(rule);
             rId++;
             if(list.size() == 0) empty = true;
@@ -204,12 +203,53 @@ public class RuleGenerator {
         return jArray;
     }
 
+    public JSONArray generateRulesHVAC(int nDevices, int hType, String season) {
+        this.hType = hType;
+        JSONArray jArray = new JSONArray();
+        int cycle = 0;
+        int rId = 1;
+
+        // hType (house ID) will work as follows:
+        // 1) small, 2) medium, 3) large
+        // set dev_table = devices[hType] to set whether this is for small, medium, or large house so rules can be dynamic
+        Random rand = new Random();
+        ArrayList<Integer> list = new ArrayList<>(8);
+        for(int i = 1; i <= 8; i++) {
+            list.add(i);
+        }
+        boolean empty = false;
+        // places HVAC into system
+        for(String rule : rulePicker(list.remove(6), cycle, season)) {
+            jArray.put(rule);
+        }
+        rId++;
+        while(rId <= nDevices) {
+            if(empty) {
+                list = new ArrayList<>(8);
+                for(int i = 1; i <= 8; i++) {
+                    list.add(i);
+                }
+                empty = false;
+                cycle++;
+            }
+
+            for (String rule : rulePicker(list.remove(rand.nextInt(list.size())), cycle, season))
+                jArray.put(rule);
+            rId++;
+            if(list.size() == 0) empty = true;
+        }
+
+        hID++;
+        rID = 0;
+        return jArray;
+    }
+
     // returns a list of rules for the given device index
-    private ArrayList<String> rulePicker(int index, int cycle){
+    private ArrayList<String> rulePicker(int index, int cycle, String season){
         rID = index;
         ArrayList<String> rules = new ArrayList<>();
         String device = getRuleLocation(index, cycle);
-        String property = getRuleProp(index);
+        String property = getRuleProp(index, season);
         int state;
         String relation;
         String predicate;
@@ -259,8 +299,13 @@ public class RuleGenerator {
 
             // Heater
             case 7:
-                state = Utilities.genRand(19, 24);
-                relation = Utilities.genRand(new String[]{"lt", "leq", "geq", "gt"});
+                if(season.equals("summer")) {
+                    state = Utilities.genRand(70, 74);
+                    relation = Utilities.genRand(new String[]{"lt", "leq"});
+                } else {
+                    state = Utilities.genRand(70, 74);
+                    relation = Utilities.genRand(new String[]{"geq", "gt"});
+                }
                 predicate = randPredicate();
                 break;
 
@@ -282,15 +327,15 @@ public class RuleGenerator {
         }
 
         rules.add(activeGen(device, property, relation, state, predicate));
-        rules.addAll(getPassiveRules(index, cycle, state));
+        rules.addAll(getPassiveRules(index, cycle, state, season));
         return rules;
     }
 
 
-    public static ArrayList<String> getPassiveRules(int index, int cycle, int state){
+    public static ArrayList<String> getPassiveRules(int index, int cycle, int state, String season){
         ArrayList<String> rules = new ArrayList<>();
         String device = getRuleLocation(index, cycle);
-        String property = getRuleProp(index);
+        String property = getRuleProp(index, season);
         switch (index){
             case 1:
                 rules.add("0 " + device + " " + property + " geq 0");
@@ -317,8 +362,13 @@ public class RuleGenerator {
                 rules.add("0 " + device + " " + property + " leq 100");
                 break;
             case 7:
-                rules.add("0 " + device + " " + property + " geq 8");
-                rules.add("0 " + device + " " + property + " leq 35");
+                if(season.equals("summer")){
+                    rules.add("0 " + device + " " + property + " geq 48");
+                    rules.add("0 " + device + " " + property + " leq 80");
+                } else {
+                    rules.add("0 " + device + " " + property + " geq 65");
+                    rules.add("0 " + device + " " + property + " leq 85");
+                }
                 break;
             case 8:
                 rules.add("0 " + device + " " + property + " geq 0");
@@ -329,6 +379,55 @@ public class RuleGenerator {
         }
         return rules;
     }
+
+    public static ArrayList<String> getPassiveRules(int index, int cycle, int state){
+        ArrayList<String> rules = new ArrayList<>();
+        String device = getRuleLocation(index, cycle);
+        String property = getRuleProp(index, "summer");
+        switch (index){
+            case 1:
+                rules.add("0 " + device + " " + property + " geq 0");
+                rules.add("0 " + device + " " + property + " leq " + state);
+                break;
+            case 2:
+                rules.add("0 " + device + " " + property + " geq 0");
+                rules.add("0 " + device + " " + property + " leq " + state);
+                break;
+            case 3:
+                rules.add("0 " + device + " " + property + " geq 0");
+                rules.add("0 " + device + " " + property + " leq " + state);
+                break;
+            case 4:
+                rules.add("0 " + device + " " + property + " geq 0");
+                rules.add("0 " + device + " " + property + " leq " + state);
+                break;
+            case 5:
+                rules.add("0 " + device + " " + property + " geq 37");
+                rules.add("0 " + device + " " + property + " leq 78");
+                break;
+            case 6:
+                rules.add("0 " + device + " " + property + " geq 0");
+                rules.add("0 " + device + " " + property + " leq 100");
+                break;
+            case 7:
+                if(property.equals("summer")){
+                    rules.add("0 " + device + " " + property + " geq 52");
+                    rules.add("0 " + device + " " + property + " leq 96");
+                } else {
+                    rules.add("0 " + device + " " + property + " geq 65");
+                    rules.add("0 " + device + " " + property + " leq 80");
+                }
+                break;
+            case 8:
+                rules.add("0 " + device + " " + property + " geq 0");
+                rules.add("0 " + device + " " + property + " leq 100");
+                rules.add("0 Roomba_880" + ((cycle>0) ? ("_" + cycle) : "") + " charge geq 0");
+                rules.add("0 Roomba_880" + ((cycle>0) ? ("_" + cycle) : "") + " charge leq 100");
+                break;
+        }
+        return rules;
+    }
+
 
 
     /**Returns a random time predicate with spacing around it.*/
@@ -442,7 +541,7 @@ public class RuleGenerator {
         }
     }
 
-    public static String getRuleProp(int index) {
+    public static String getRuleProp(int index, String season) {
         switch(index) {
             case 1: return  "laundry_wash";
             case 2: return  "laundry_dry";
@@ -450,7 +549,11 @@ public class RuleGenerator {
             case 4: return  "bake";
             case 5: return  "water_temp";
             case 6: return  "charge";
-            case 7: return  "temperature_heat";
+            case 7:
+                if(season.equals("summer"))
+                    return "temperature_cool";
+                else
+                    return  "temperature_heat";
             case 8: return  "cleanliness";
             default: return "NULL";
         }

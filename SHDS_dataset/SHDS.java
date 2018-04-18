@@ -8,9 +8,9 @@ import java.util.Iterator;
 public class SHDS {
     public static void main(String[] args) {
         String[] city = {
-                "DM", //Des Moines
-                "BO", //Boston
-                "SF"  //San Francisco
+                "houston", // houston
+                "boston",  // boston
+                "chicago"  // chicago
         };
 
         /*
@@ -19,9 +19,9 @@ public class SHDS {
 
          By knowing the city and size of grid, we can determine how many agents there should be in the problem
          int cID ---------- City identifier. We have 3 cities here:
-              0) Des Moines
+              0) Houston
               1) Boston
-              2) San Francisco
+              2) Chicago
          int clusters ----- Number of clusters in the problem (each cluster is a fully connected graph of houses, a neighborhood).
                             Each cluster is connected to one other cluster, connecting the whole graph together.
          int gridLength --- Chunk of the city covered by the problem, this is in meters^2
@@ -42,9 +42,6 @@ public class SHDS {
             case "-datasets":
                 generateDatasets(settings.getInt("time_span"), settings.getInt("time_granularity"));
             break;
-            case "-extras" :
-                generateExtras(settings.getInt("time_span"), settings.getInt("time_granularity"));
-            break;
             case "-generate":
                 topo = generateTopology(
                     Integer.parseInt(args[1]),
@@ -55,32 +52,31 @@ public class SHDS {
                     + city[Integer.parseInt(args[1])]
                     + "_a" + topo.getNumAgents()
                     + "_c" + topo.getNumClusters();
-                generateSHDSInstances(fileName, Integer.parseInt(args[4]), topo, settings.getInt("time_span"), settings.getInt("time_granularity"));
+                generateSHDSInstances(fileName, Integer.parseInt(args[4]), topo, settings.getInt("time_span"), settings.getInt("time_granularity"), "summer");
             break;
             case "-test": 
                 if (args.length == 5) {
                     for (int m = 0; m < Integer.parseInt(args[4]); m++) {
                         fileName = "datasets/ins_" + args[1] + "_" + m;
-                        generateSHDSTest(fileName, Integer.parseInt(args[1]), Integer.parseInt(args[2]), Integer.parseInt(args[3]));
+                        generateSHDSTest(fileName, Integer.parseInt(args[1]), Integer.parseInt(args[2]), Integer.parseInt(args[3]), "summer");
                     }
                 } else {
                     fileName = "datasets/instance_r" + args[1] + "_s" + args[2] + "_g" + args[3];
-                    generateSHDSTest(fileName, Integer.parseInt(args[1]), Integer.parseInt(args[2]), Integer.parseInt(args[3]));
+                    generateSHDSTest(fileName, Integer.parseInt(args[1]), Integer.parseInt(args[2]), Integer.parseInt(args[3]), "summer");
                 }
-      
             break;
             case "-tests": 
                 if (args.length == 4) {
                     for (int m = 1; m <= 8; m++) {
                         for (int n = 0; n < Integer.parseInt(args[3]); n++) {
                             fileName = "datasets/ins_" + m + "_" + n;
-                            generateSHDSTest(fileName, m, Integer.parseInt(args[1]), Integer.parseInt(args[2]));
+                            generateSHDSTest(fileName, m, Integer.parseInt(args[1]), Integer.parseInt(args[2]), "summer");
                         }
                     }
                 } else {
                     for (int m = 1; m <= 8; m++) {
                         fileName = "datasets/instance_r" + m + "_s" + args[1] + "_g" + args[2];
-                        generateSHDSTest(fileName, m, Integer.parseInt(args[1]), Integer.parseInt(args[2]));
+                        generateSHDSTest(fileName, m, Integer.parseInt(args[1]), Integer.parseInt(args[2]), "summer");
                     }
                 }
             break;
@@ -93,19 +89,19 @@ public class SHDS {
                 }
             break;
             case "-genAgents":
-                topo = new Topology(Integer.parseInt(args[4]), Integer.parseInt(args[4]));
+                topo = new Topology(Integer.parseInt(args[4]), 35);
                 int[] houseRatio;
                 if(args[1].equals("all")) { //if user types all instead of a rule_id, generate every possible combination of rule_id and house_ratio
                     for(int r = 1; r <= 8; r++) {
                         houseRatio = new int[]{1, 0, 0};
                         fileName = "datasets/ins_" + r + "_" + args[2] + "_" + args[3] + "_a" + args[4] + "_h" + 0;
-                        generateSHDSTest(fileName, r, topo, Integer.parseInt(args[2]), Integer.parseInt(args[3]), houseRatio);
+                        generateSHDSTest(fileName, r, topo, Integer.parseInt(args[2]), Integer.parseInt(args[3]), houseRatio, "summer");
                         houseRatio = new int[]{0, 1, 0};
                         fileName = "datasets/ins_" + r + "_" + args[2] + "_" + args[3] + "_a" + args[4] + "_h" + 1;
-                        generateSHDSTest(fileName, r, topo, Integer.parseInt(args[2]), Integer.parseInt(args[3]), houseRatio);
+                        generateSHDSTest(fileName, r, topo, Integer.parseInt(args[2]), Integer.parseInt(args[3]), houseRatio, "summer");
                         houseRatio = new int[]{0, 0, 1};
                         fileName = "datasets/ins_" + r + "_" + args[2] + "_" + args[3] + "_a" + args[4] + "_h" + 2;
-                        generateSHDSTest(fileName, r, topo, Integer.parseInt(args[2]), Integer.parseInt(args[3]), houseRatio);
+                        generateSHDSTest(fileName, r, topo, Integer.parseInt(args[2]), Integer.parseInt(args[3]), houseRatio, "summer");
                     }
                 } else {
                     fileName = "datasets/ins_" + args[1] + "_" + args[2] + "_" + args[3] + "_a" + args[4] + "_h" + args[5];
@@ -124,49 +120,47 @@ public class SHDS {
                             houseRatio = new int[]{0, 0 ,1};
                         break;
                         default:
-                            houseRatio = new int[]{0, 1, 0};
+                            houseRatio = new int[]{1, 1, 1};
                     }
-                    generateSHDSTest(fileName, Integer.parseInt(args[1]), topo, Integer.parseInt(args[2]), Integer.parseInt(args[3]), houseRatio);
+                    generateSHDSTest(fileName, Integer.parseInt(args[1]), topo, Integer.parseInt(args[2]), Integer.parseInt(args[3]), houseRatio, "summer");
                 }
             break;
-			case "-one":
-				// -one <time_span> <time_granularity> <numDevices> <house_size>
-				fileName = "datasets/house";
-				switch(args[4]){
-					case "0":
-					case "small":
-						houseRatio = new int[]{1, 0 ,0};
-					break;
-					case "1":
-					case "medium":
-						houseRatio = new int[]{0, 1 ,0};
-					break;
-					case "2":
-					case "large":
-						houseRatio = new int[]{0, 0 ,1};
-					break;
-					default:
-						houseRatio = new int[]{0, 1, 0};
-				}
-				// generates a single agent with args[1] rules
-				JSONArray devices = convertDevices(readDevices(), Integer.parseInt(args[2]));
-				RuleGenerator ruleGen = new RuleGenerator(Integer.parseInt(args[1]), Integer.parseInt(args[2]), devices);
-				Generator gen = new Generator(new Topology(1, 1), ruleGen, Integer.parseInt(args[3]), houseRatio);
-				try {
-					FileWriter fileOut = new FileWriter(fileName + ".json");
-					fileOut.write(gen.generate("false").toString(2));
-					fileOut.flush();
-					fileOut.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				break;
+            case "-one":
+                // -one <time_span> <time_granularity> <numDevices> <house_size>
+                fileName = "datasets/house";
+                switch(args[4]){
+                    case "0":
+                    case "small":
+                        houseRatio = new int[]{1, 0 ,0};
+                        break;
+                    case "1":
+                    case "medium":
+                        houseRatio = new int[]{0, 1 ,0};
+                        break;
+                    case "2":
+                    case "large":
+                        houseRatio = new int[]{0, 0 ,1};
+                        break;
+                    default:
+                        houseRatio = new int[]{0, 1, 0};
+                }
+                // generates a single agent with args[1] rules
+                JSONArray devices = convertDevices(readDevices(), Integer.parseInt(args[2]));
+                RuleGenerator ruleGen = new RuleGenerator(Integer.parseInt(args[1]), Integer.parseInt(args[2]), devices);
+                Generator gen = new Generator(new Topology(1, 1), ruleGen, Integer.parseInt(args[3]), houseRatio);
+                try {
+                    FileWriter fileOut = new FileWriter(fileName + ".json");
+                    fileOut.write(gen.generate("false", "summer").toString(2));
+                    fileOut.flush();
+                    fileOut.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
             case "-help":
                 System.out.println(
                     "-datasets\n\t" +
                             "generates datasets with same settings used in paper.\n" +
-                    "-extras\n\t" +
-                            "generates extra datasets mentioned in paper.\n" +
                     "-generate <cityID> <gridLength> <clusterDiv> <numDevices>\n\t" +
                             "generates a custom dataset with extra arguments as settings.\n" +
                     "-genAgents <rule_id> <time_span> <time_granularity> <num_agents> <house_size>\n\t" +
@@ -177,140 +171,60 @@ public class SHDS {
                             "generates a dataset with 1 house and 1 rule (with the given ruleID)\n" +
                     "-tests <time_span> <time_granularity> <OPTIONAL:num_files>\n\t" +
                             "generates a dataset with 1 house FOR EACH rule\n" +
-					"-one <time_span> <time_granularity> <numDevices> <house_size>\n\t" +
-							"generates a dataset with a 1 house and numDevices rules\n\n" +
-					"_______ NOTES __________________________________________\n" +
-					"<time_span> is number of hours the schedule covers\n" +
-					"<time_granularity> is number of minutes in a timestep\n" +
-					"<clusterDiv> is number of coalitions to divide agents into\n");
+                    "-one <time_span> <time_granularity> <numDevices> <house_size>\n\t" +
+                            "generates a dataset with a 1 house and numDevices rules\n\n" +
+                    "_______ NOTES __________________________________________\n" +
+                    "<time_span> is number of hours the schedule covers\n" +
+                    "<time_granularity> is number of minutes in a timestep\n" +
+                    "<clusterDiv> is number of coalitions to divide agents into\n");
             break;
         }
     }
-    
-    
-    
-    
-    
-    
+
+
+    // Generates datasets for houston, chicago, and boston for winter and summer
     private static void generateDatasets(int time_span, int time_granularity) {
-        /*
-
-         Below is an example of how to generate data sets
-
-         */
-
         String[] city = {
-                "dm", //Des Moines
-                "bo", //Boston
-                "sf"  //San Francisco
+                "houston", // houston
+                "boston",  // boston
+                "chicago"  // chicago
         };
 
-        double[] gridLength = { //relates (mostly) to number of agents
-                10,
-                30,
-                50,
-                100,
-                350,
-                500,
-                850,
-                1000,
-                1500,
-                2000,
-        };
+        String[] seasons = {"summer", "winter"};
 
-        double[] clusterDiv = { //multiply grid length by this and plug into radius in order for this to be number of clusters
-                1,
-                2,
-                4,
-                8,
-                16,
-                32,
-                64,
-                128,
-                256,
-                512,
-                1024
-        };
 
-        final int MIN_DEV = 2; final int MAX_DEV = 6; //minimum and maximum amount of devices per house to generate files for
-        final int NUM_GRID_SIZES = 5; //number of different grid sizes to generate from the list above, some of the larger problems might be to big for some computers to handle
+        final int MIN_DEV = 4; final int MAX_DEV = 4; //minimum and maximum amount of devices per house to generate files for
         for(int i = 0; i < city.length; i++) { // for each city
-            for(int j = 0; j < NUM_GRID_SIZES; j++) { //for each grid size
-
-                Topology topo = generateTopology(i, gridLength[j], 1);
-                for(int d = MIN_DEV; d <= MAX_DEV; d++) {
-                    String fileName = "datasets/" + city[i]
+            for(String season : seasons) {
+                Topology topo = new Topology(1000, 100, 4);
+                for (int d = MIN_DEV; d <= MAX_DEV; d++) {
+                    String fileName = "datasets/" + city[i].substring(0, 2)
+                            + "_" + season.substring(0,2)
                             + "_" + topo.getNumAgents()
                             + "_" + topo.getNumClusters()
                             + "_" + d;
-                    generateSHDSInstances(fileName, d, topo, time_span, time_granularity);
-
-                    if(d == MAX_DEV) {
-                        Topology temp = topo;
-                        for (int k = 2; temp != null && k < clusterDiv.length; k++) {
-                            temp = generateTopology(i, gridLength[j], clusterDiv[k]);
-                            if (temp == null) continue; // if num_agents < agents_per_cluster then stop
-                            else topo = temp;
-                        }
-                        fileName = "datasets/" + city[i]
-                                + "_" + topo.getNumAgents()
-                                + "_" + topo.getNumClusters()
-                                + "_" + d;
-                        generateSHDSInstances(fileName, d, topo, time_span, time_granularity);
-                    }
+                    generateSHDSInstancesHVAC(fileName, d, topo, time_span, time_granularity, city[i], season);
                 }
             }
         }
     }
 
-
-
-    private static void generateExtras(int time_span, int time_granularity) {
-
-        String[] city = {
-                "DM", //Des Moines
-                "BO", //Boston
-                "SF"  //San Francisco
-        };
-
-        double[] gridLength = { //relates (mostly) to number of agents
-                10,
-                30,
-                50,
-                100,
-                350,
-                500,
-                850,
-                1000,
-                1500,
-                2000,
-        };
-
-        for(int i = 0; i < 3; i++){
-            for(int j = 0; j < gridLength.length; j++){
-                Topology topology = generateTopology(i, gridLength[j], 1);
-                for(int d = 2; d <=20; d++) {
-                    generateSHDSInstances("datasets/" + city[i] + "_" + topology.getNumAgents() + "_" + d, d, topology, time_span, time_granularity);
-                }
-            }
-        }
-    }
 
     /**
      * By knowing the city and size of grid, we can determine how many agents there should be in the problem
      * int cID ---------- City identifier. We have 3 cities here:
-     *      0) Des Moines
+     *      0) Houston
      *      1) Boston
-     *      2) San Francisco
+     *      2) Chicago
      * int clusters ----- Number of clusters in the problem (each cluster is a fully connected graph of houses, a neighborhood).
      *                    Each cluster is connected to one other cluster, connecting the whole graph together.
      * int gridLength --- Chunk of the city covered by the problem, this is in meters^2
      **/
     private static Topology generateTopology(int cID, double gridLength, double clusters) {
         double[] densityCity = {
-                 718, // 0 --- Des Moines
+                 357, // 0 --- Houston
                 1357, // 1 --- Boston
-                3766  // 2 --- San Francisco
+                1161  // 2 --- Chicago
         };
         if(clusters > (densityCity[cID] * gridLength)/1000) { // This means that there are more clusters than agents which is impossible
             return null;
@@ -318,15 +232,15 @@ public class SHDS {
         return new Topology(densityCity[cID], gridLength, gridLength/clusters);
     }
 
-    private static void generateSHDSTest(String fileName, int rule_id, int span, int gran) {
+    private static void generateSHDSTest(String fileName, int rule_id, int span, int gran, String season) {
         JSONArray devices = convertDevices(readDevices(), gran);
         RuleGenerator ruleGen = new RuleGenerator(span, gran, devices);
         Generator gen = new Generator(new Topology(1, 1), ruleGen, 1, new int[] { 1, 1, 1 });
-        ArrayList rList = new ArrayList();
-        rList.add(Integer.valueOf(rule_id));
+        ArrayList<Integer> rList = new ArrayList<>();
+        rList.add(rule_id);
         try {
             FileWriter fileOut = new FileWriter(fileName + ".json");
-            fileOut.write(gen.generate("false", rList).toString(2));
+            fileOut.write(gen.generate("false", rList, season).toString(2));
             fileOut.flush();
             fileOut.close();
         } catch (IOException e) {
@@ -335,7 +249,7 @@ public class SHDS {
     }
     
     // used for num_agents test with a specific rule id and house ratio
-    public static void generateSHDSTest(String fileName, int rule_id, Topology topo, int span, int gran, int[] houseRatio) {
+    public static void generateSHDSTest(String fileName, int rule_id, Topology topo, int span, int gran, int[] houseRatio, String season) {
         JSONArray devices = convertDevices(readDevices(), gran);
         RuleGenerator ruleGen = new RuleGenerator(span, gran, devices);
         Generator gen = new Generator(topo, ruleGen, 2, houseRatio);
@@ -344,7 +258,22 @@ public class SHDS {
         //rList.add(Integer.valueOf(1));
         try {
             FileWriter fileOut = new FileWriter(fileName + ".json");
-            fileOut.write(gen.generate("false", rList).toString(2));
+            fileOut.write(gen.generate("false", rList, season).toString(2));
+            fileOut.flush();
+            fileOut.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void generateSHDSInstancesHVAC(String fileName, int nDevices, Topology topo, int span, int granularity, String city, String season) {
+        JSONArray devices = convertDevices(readDevices(), granularity);
+        RuleGenerator ruleGen = new RuleGenerator(span, granularity, devices);
+        Generator gen = new Generator(topo, ruleGen, nDevices, new int[]{1, 1, 1});
+
+        try {
+            FileWriter fileOut = new FileWriter(fileName+".json");
+            fileOut.write(gen.generateHVAC(fileName + "_CSV.txt", city, season).toString(2));
             fileOut.flush();
             fileOut.close();
         } catch (IOException e) {
@@ -353,14 +282,14 @@ public class SHDS {
     }
 
     //Generate a dataset
-    public static void generateSHDSInstances(String fileName, int nDevices, Topology topo, int span, int granularity) {
+    public static void generateSHDSInstances(String fileName, int nDevices, Topology topo, int span, int granularity, String season) {
         JSONArray devices = convertDevices(readDevices(), granularity);
         RuleGenerator ruleGen = new RuleGenerator(span, granularity, devices);
         Generator gen = new Generator(topo, ruleGen, nDevices, new int[]{1, 1, 1});
 
         try {
             FileWriter fileOut = new FileWriter(fileName+".json");
-            fileOut.write(gen.generate(fileName + "_CSV.txt").toString(2));
+            fileOut.write(gen.generate(fileName + "_CSV.txt", season).toString(2));
             fileOut.flush();
             fileOut.close();
         } catch (IOException e) {
@@ -443,15 +372,4 @@ public class SHDS {
         return devices;
     }
 
-    private static int getCID(String city) {
-        switch(city) {
-            case "DM":
-                return 0;
-            case "BO":
-                return 1;
-            case "SF":
-                return 2;
-        }
-        return -1;
-    }
 }
